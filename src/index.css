@@ -88,7 +88,7 @@
 =========================== */
 @layer utilities {
   /* ===========================
-     KOREAN (Interop)
+    Interop
   =========================== */
 
   /* (Pre Title 1 K) Interop Medium 30 35 4% */
@@ -182,7 +182,7 @@
   }
 
   /* ===========================
-     ENGLISH (JetBrains Mono)
+    JetBrains Mono
   =========================== */
 
   /* (Title/Header 1) JetBrains Mono Bold 50 55 0% */
@@ -258,7 +258,7 @@
   }
 
   /* (Tag Text E W) JetBrains Mono Medium 8 10 0% */
-  .typo-tagtext-ew {
+  .typo-tagtextew {
     font-family: "JetBrains Mono", sans-serif;
     font-weight: 500;
     font-size: 8px;
@@ -267,7 +267,7 @@
   }
 
   /* (Footer 1 E W) JetBrains Mono Light 15 18 0% */
-  .typo-footer1-ew {
+  .typo-footer1ew {
     font-family: "JetBrains Mono", sans-serif;
     font-weight: 300;
     font-size: 15px;
@@ -276,7 +276,7 @@
   }
 
   /* (Footer 2 E W) JetBrains Mono Medium 12 10 8% */
-  .typo-footer2-ew {
+  .typo-footer2ew {
     font-family: "JetBrains Mono", sans-serif;
     font-weight: 500;
     font-size: 12px;
@@ -285,7 +285,7 @@
   }
 
   /* (Footer 1 E M) JetBrains Mono Light 12 18 0% */
-  .typo-footer1-em {
+  .typo-footer1em {
     font-family: "JetBrains Mono", sans-serif;
     font-weight: 300;
     font-size: 12px;
@@ -294,11 +294,27 @@
   }
 
   /* (Footer 2 E M) JetBrains Mono Medium 12 18 8% */
-  .typo-footer2-em {
+  .typo-footer2em {
     font-family: "JetBrains Mono", sans-serif;
     font-weight: 500;
     font-size: 12px;
     line-height: 18px;
     letter-spacing: 0.08em;
   }
+}
+
+  /* ===========================
+    COLOR
+  =========================== */
+
+@theme {
+  --color-primary-brand: #FF5202;
+  --color-secondary-brand: #F9F8F5;
+  --color-light: #FFFFFF;
+  --color-line: #D2D2D1;
+  --color-accent: #F5F5F5;
+  --color-empty-img: #EFEFEF;
+  --color-text: #020202;
+  --color-hover-img: rgba(2, 2, 2, 0.7);
+  --color-sub-text: rgba(2, 2, 2, 0.3);
 }
