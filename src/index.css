@@ -172,6 +172,15 @@
     letter-spacing: 0.04em;
   }
 
+    /* (Button Text Bold) Interop Regular 13 14 4% */
+  .typo-buttontextbold {
+    font-family: "Interop", sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 14px;
+    letter-spacing: 0.04em;
+  }
+
   /* (Comment K) Interop Light 10 18 10% */
   .typo-commentk {
     font-family: "Interop", sans-serif;
@@ -296,7 +305,7 @@
   /* (Footer 2 E M) JetBrains Mono Medium 12 18 8% */
   .typo-footer2em {
     font-family: "JetBrains Mono", sans-serif;
-    font-weight: 500;
+    font-weight: 300;
     font-size: 12px;
     line-height: 18px;
     letter-spacing: 0.08em;
