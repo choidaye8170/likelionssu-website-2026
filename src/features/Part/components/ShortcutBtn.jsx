@@ -1,10 +1,10 @@
 import React from "react";
 import down from "../assets/down.svg";
 
-export default function ShortcutBtn() {
+export default function ShortcutBtn({ text = "파트장의 말" }) {
   return (
     <div className="group flex border-[0.7px] border-text w-[7.625rem] gap-[0.3125rem] justify-center items-center p-[0.625rem]">
-      <p className="typo-small1 text-text">파트장의 말</p>
+      <p className="typo-small1 text-text">{text}</p>
 
       <img
         src={down}
@@ -14,3 +14,5 @@ export default function ShortcutBtn() {
     </div>
   );
 }
+
+//<ShortcutBtn text="세션 소개" />

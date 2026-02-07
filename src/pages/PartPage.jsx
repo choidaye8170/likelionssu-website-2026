@@ -52,6 +52,7 @@ export default function PartPage() {
 
       <div className="mt-[2.69rem] h-[20rem]">PartPage</div>
       <ShortcutBtn/>
+      <ShortcutBtn text="세션 소개" />
 
       <Footer />
       <SideBar isOpen={isSidebarOpen} onClose={closeSidebar} />
