@@ -3,6 +3,7 @@ import Header from "../components/header/Header";
 import SideBar from "../components/sidebar/SideBar";
 import Footer from "../components/footer/Footer";
 import PartMenu from "../features/Part/components/PartMenu";
+import ShortcutBtn from "../features/Part/components/ShortcutBtn";
 
 export default function PartPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -50,6 +51,7 @@ export default function PartPage() {
 </div>
 
       <div className="mt-[2.69rem] h-[20rem]">PartPage</div>
+      <ShortcutBtn/>
 
       <Footer />
       <SideBar isOpen={isSidebarOpen} onClose={closeSidebar} />
