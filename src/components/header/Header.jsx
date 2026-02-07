@@ -1,9 +1,9 @@
-import React from 'react'
-import Logo from './Logo'
-import Recruit from './Recruit'
-import menu from "../../assets/menu.svg"
+import React from 'react';
+import Logo from './Logo';
+import HoverBtn from './HoverBtn';
+import menu from "../../assets/menu.svg";
 
-export default function Header() {
+export default function Header({ onMenuClick }) {
   return (
     <div className="border-b-[0.7px] border-line bg-secondarybrand flex flex-col items-center 
                     h-[5.9375rem] sm:h-[3.5625rem] sm:pt-[0.625rem] sm:pb-[0.0625rem] gap-[0.5565rem]">
@@ -20,16 +20,19 @@ export default function Header() {
         <div className="flex items-center justify-end gap-[2.5rem] sm:gap-[2.5rem] sm:flex">
           {/* Recruit - 웹에서만 */}
           <div className="hidden sm:flex">
-            <Recruit />
+            <HoverBtn type="managementteam"/>
           </div>
 
           {/* Menu */}
-          <div className="absolute top-[3.63rem] right-[1.22rem] sm:static sm:top-0 sm:right-0 flex items-center justify-center">
+          <div 
+            className="absolute top-[3.63rem] right-[1.22rem] sm:static sm:top-0 sm:right-0 flex items-center justify-center cursor-pointer"
+            onClick={onMenuClick}
+          >
             <img src={menu} className="w-[1.2375rem] h-[0.9375rem]" />
           </div>
         </div>
 
       </div>
     </div>
-  )
+  );
 }

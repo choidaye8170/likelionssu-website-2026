@@ -234,7 +234,7 @@
   /* (Pre Title 2 E) JetBrains Mono SemiBold 15 18 0% */
   .typo-pretitle2e {
     font-family: "JetBrains Mono", sans-serif;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 15px;
     line-height: 18px;
     letter-spacing: 0em;
@@ -252,7 +252,7 @@
   /* (Card Text E) JetBrains Mono SemiBold 16 20 0% */
   .typo-cardtexte {
     font-family: "JetBrains Mono", sans-serif;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 16px;
     line-height: 20px;
     letter-spacing: 0em;
