@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import HoverBtn from "../components/header/HoverBtn";
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -23,6 +24,7 @@ export default function HomePage() {
             {item.label}
           </button>
         ))}
+        <HoverBtn/>
       </nav>
     </div>
   );
