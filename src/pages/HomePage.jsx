@@ -13,7 +13,7 @@ export default function HomePage() {
 
   return (
     <div className="bg-secondarybrand min-h-screen relative overflow-hidden">
-      <Header onMenuClick={toggleSidebar} noneSidebar={true} />
+      <Header onMenuClick={toggleSidebar} noneSidebar={true} hideMobileMenu={true}/>
 
       {/* 화면 정중앙 세로선 */}
       <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[0.0625rem] h-screen bg-line z-10" />
