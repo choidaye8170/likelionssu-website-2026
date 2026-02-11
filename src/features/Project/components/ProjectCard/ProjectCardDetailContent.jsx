@@ -86,7 +86,7 @@ export default function ProjectCardDetailContent({ project, variant }) {
               About
             </h2>
             <p
-              className={`${isMobile ? "typo-body2" : "typo-commentk"} text-text whitespace-pre-line`}
+              className={`${isMobile ? "typo-body2" : "typo-small2"} text-text whitespace-pre-line`}
             >
               {project.about}
             </p>
@@ -101,7 +101,7 @@ export default function ProjectCardDetailContent({ project, variant }) {
               {project.stack.map((tech) => (
                 <span
                   key={tech}
-                  className={`px-2 py-1.5 bg-accent text-text ${isMobile ? "typo-footer2ew" : "typo-tagtextew"}`}
+                  className={`px-1.5 py-1.5 bg-accent text-text ${isMobile ? "typo-footer2ew" : "typo-tagtextew"}`}
                 >
                   {tech}
                 </span>
@@ -115,7 +115,7 @@ export default function ProjectCardDetailContent({ project, variant }) {
               Team
             </h2>
             <p
-              className={`${isMobile ? "typo-body2" : "typo-commentk"} text-text whitespace-pre-line`}
+              className={`${isMobile ? "typo-body2" : "typo-small2"} text-text whitespace-pre-line`}
             >
               {project.team}
             </p>
