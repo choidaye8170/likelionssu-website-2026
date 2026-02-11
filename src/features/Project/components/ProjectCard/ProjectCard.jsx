@@ -6,7 +6,7 @@ export default function ProjectCard({
   imageUrl,
 }) {
   return (
-    <article className="bg-white overflow-hidden flex flex-col w-[20.6rem] h-[15.9rem] p-[0.63rem] cursor-pointer hover:shadow-lg transition-shadow">
+    <article className="bg-white overflow-hidden flex flex-col w-[20.6rem] h-[15.9rem] p-[0.63rem] cursor-pointer border border-white transition-shadow hover:shadow-[10px_10px_20px_0_rgba(0,0,0,0.1)]">
       {/* 이미지 */}
       <div className="w-full h-[11.6rem] bg-emptyimg overflow-hidden">
         {imageUrl ? (
@@ -21,7 +21,7 @@ export default function ProjectCard({
       </div>
 
       {/* 이미지-텍스트 간격 */}
-      <div className="h-[0.63rem]" />
+      <div className="h-[0.88rem]" />
 
       {/* 텍스트 */}
       <div className="flex flex-col gap-1">
