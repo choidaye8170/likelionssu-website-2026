@@ -54,7 +54,6 @@ export default function FilterSection({
           );
         })}
 
-        {/* 기존 하단 라인 유지하지만 sticky 상태면 비활성화/}
         {!isSticky && (
           <div
             className="absolute bottom-0 left-0 right-0 h-px bg-line"
