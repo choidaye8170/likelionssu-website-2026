@@ -6,6 +6,7 @@ import {
   CORE_VALUES,
 } from "../../../data/about";
 import activityCheckIcon from "../../../assets/activity-check.svg";
+import recruitIcon from "../../../assets/recruit.svg";
 import RoadmapMobile from "./RoadmapMobile";
 
 /**
@@ -60,7 +61,7 @@ export default function AboutContent({ activeIndex, onSectionEnter }) {
         </div>
 
         {/* 오른쪽: 연혁, Core Values, Management Team - 모바일에서 먼저 표시 */}
-        <div className="flex-1 min-w-0 flex flex-col gap-10 sm:gap-12 order-1 sm:order-none">
+        <div className="flex-1 min-w-0 flex flex-col gap-10 order-1 sm:order-none">
           <section>
             <h2 className="typo-pretitle2e mb-6">YeonHheok</h2>
             <ul className="typo-bodyk1 space-y-1">
@@ -82,10 +83,17 @@ export default function AboutContent({ activeIndex, onSectionEnter }) {
           <section>
             <a
               href="#"
-              className="typo-pretitle2e text-primarybrand underline inline-flex items-center gap-2"
+              className="typo-pretitle2e text-text inline-flex items-center gap-2 relative pt-7.5"
             >
-              Management Team
-              <span aria-hidden>↗</span>
+              <span>Management Team</span>
+              <img
+                src={recruitIcon}
+                alt=""
+                width={17}
+                height={17}
+                aria-hidden
+              />
+              <span className="absolute left-0 right-0 bottom-[-4px] h-[1px] bg-text"></span>
             </a>
           </section>
         </div>

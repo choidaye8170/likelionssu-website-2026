@@ -16,7 +16,7 @@ export default function RoadmapMobile() {
 
   return (
     <section className="flex-1 min-w-0 sm:hidden">
-      <h2 className="typo-pretitle2e mb-5">ROADMAP</h2>
+      <h2 className="typo-pretitle2e mb-5 mt-7.5">ROADMAP</h2>
       <div className="space-y-4">
         {ROADMAP_SECTIONS.map((section) => (
           <div key={section.id}>
