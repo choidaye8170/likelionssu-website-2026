@@ -5,7 +5,7 @@ import grid from "../../assets/grid-left.svg";
 
 export default function PmContent() {
   return (
-    <div className="relative w-full  overflow-x-hidden flex flex-col justify-start items-start gap-[2.75rem] min-h-[55.6rem] pb-[2.31rem]">
+    <div className="relative w-full  overflow-x-hidden flex flex-col justify-start items-start gap-[2.75rem] min-h-[55.6rem] pb-[2.68rem]">
 
       {/* =======================
           모바일용 hr

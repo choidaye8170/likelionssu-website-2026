@@ -7,21 +7,15 @@ export default function SessionSection({ version = "pm" }) {
   return (
     <div className="relative w-full flex flex-col pt-[3.375rem] sm:pt-[6.81rem]">
 
-      {/* =======================
-          경계선 (라인)
-      ======================= */}
-
       {/* 모바일: 화면 끝까지 */}
       <hr className="sm:hidden absolute top-0 left-0 w-screen border-t-[0.7px] border-line" />
 
-      {/* 웹: 화면 오른쪽 끝에 딱 붙는 라인 */}
-      <div className="hidden sm:flex absolute top-0 left-1/2 -translate-x-1/2 w-screen justify-end pointer-events-none">
+      {/* 웹: 컨텐츠 시작점(6.81rem 아래)에 맞춰서 라인 */}
+      <div className="hidden sm:flex absolute top-[2.81rem] left-1/2 -translate-x-1/2 w-screen justify-end pointer-events-none">
         <hr className="w-[44.5rem] border-t-[0.7px] border-line" />
       </div>
 
-      {/* =======================
-          컨텐츠 wrapper
-      ======================= */}
+      {/* 컨텐츠 wrapper */}
       <div className="w-full flex flex-col sm:flex-row px-[1.19rem] sm:px-0">
 
         {/* 상단 소개 */}
@@ -35,7 +29,6 @@ export default function SessionSection({ version = "pm" }) {
 
         {/* 세션 리스트 */}
         <div className="flex flex-col mt-[1.88rem] order-2 sm:order-1 sm:mt-0">
-
           <p className="hidden sm:block typo-small1 text-text mb-[1.19rem]">
             * 공통 세션 이후에 이루어지는 파트별 세션 내용입니다
           </p>
@@ -101,7 +94,6 @@ export default function SessionSection({ version = "pm" }) {
           <p className="sm:hidden typo-small1 mt-[0.62rem] text-text">
             * 공통 세션 이후에 이루어지는 파트별 세션 내용입니다
           </p>
-
         </div>
       </div>
     </div>
