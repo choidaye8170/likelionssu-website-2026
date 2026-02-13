@@ -122,8 +122,11 @@ export default function ActivityVisual({ activeIndex, scrollToIndex, onScrollCha
       e.preventDefault();
       e.stopPropagation();
 
-      // 컨테이너 내부 스크롤
-      container.scrollTop += e.deltaY;
+      // 컨테이너 내부 스크롤 (scroll-snap과 호환)
+      container.scrollBy({
+        top: e.deltaY,
+        behavior: 'auto' // scroll-snap이 부드럽게 처리함
+      });
     };
 
     container.addEventListener("wheel", handleWheel, { passive: false });
@@ -157,6 +160,8 @@ export default function ActivityVisual({ activeIndex, scrollToIndex, onScrollCha
         style={{
           scrollbarWidth: 'none',
           msOverflowStyle: 'none',
+          scrollSnapType: 'y mandatory',
+          scrollBehavior: 'smooth',
         }}
       >
         {/* 첫 활동을 중앙에 배치하기 위한 상단 여백 */}
@@ -184,6 +189,8 @@ export default function ActivityVisual({ activeIndex, scrollToIndex, onScrollCha
                   marginBottom: ACTIVITY_GAP + 'px',
                   width: ACTIVITY_WIDTH + 'px',
                   height: ACTIVITY_HEIGHT + 'px',
+                  scrollSnapAlign: 'center',
+                  scrollSnapStop: 'always',
                 }}
                 data-activity-index={activityIndex}
               >
