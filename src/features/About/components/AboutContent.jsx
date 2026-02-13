@@ -11,10 +11,20 @@ import RoadmapMobile from "./RoadmapMobile";
 
 /**
  * 오른쪽 스크롤 텍스트 영역.
- * onSectionEnter는 스크롤 감지(Intersection Observer) 후 다음 단계에서 연결 예정.
  */
-// eslint-disable-next-line no-unused-vars -- 다음 단계에서 Scroll Spy / 클릭 스크롤 연결 시 사용
-export default function AboutContent({ activeIndex, onSectionEnter }) {
+export default function AboutContent({ 
+  activeIndex, 
+  onActivityClick
+}) {
+  // 전체 활동 인덱스 계산
+  const getGlobalIndex = (sectionIndex, activityIndex) => {
+    let globalIndex = 0;
+    for (let i = 0; i < sectionIndex; i++) {
+      globalIndex += ROADMAP_SECTIONS[i].activities.length;
+    }
+    return globalIndex + activityIndex;
+  };
+
   return (
     <div className="min-h-screen py-9 px-5 sm:px-12 text-color-text">
       {/* ABOUT US - 중앙 정렬 */}
@@ -25,32 +35,42 @@ export default function AboutContent({ activeIndex, onSectionEnter }) {
 
       {/* 세로로 반 나눔: 왼쪽 ROADMAP / 오른쪽 YeonHheok, Core Values, Management Team */}
       <div className="flex flex-col sm:flex-row gap-10 sm:gap-12 sm:pl-4">
-        {/* 왼쪽: ROADMAP - 데스크톱은 리스트만, 모바일은 클릭 시 이미지 3장 펼침 */}
+        {/* 왼쪽: ROADMAP - 데스크톱은 클릭 가능한 리스트, 모바일은 클릭 시 이미지 3장 펼침 */}
         <section className="flex-1 min-w-0 hidden sm:block">
           <h2 className="typo-pretitle2e mb-5">ROADMAP</h2>
           <div className="space-y-8">
-            {ROADMAP_SECTIONS.map((section) => (
+            {ROADMAP_SECTIONS.map((section, sectionIndex) => (
               <div key={section.id}>
                 <h3 className="typo-boldk mb-2.5">{section.title}</h3>
                 <ul className="typo-bodyk1 space-y-2.25">
-                  {section.activities.map((activity) => (
-                    <li
-                      key={activity.id}
-                      className="flex items-center justify-between w-42 gap-2 pl-3.5"
-                    >
-                      <span>{activity.label}</span>
-                      {activity.isKeyEvent && (
-                        <img
-                          src={activityCheckIcon}
-                          alt=""
-                          width={13}
-                          height={13}
-                          className="shrink-0"
-                          aria-hidden
-                        />
-                      )}
-                    </li>
-                  ))}
+                  {section.activities.map((activity, activityIndex) => {
+                    const globalIndex = getGlobalIndex(sectionIndex, activityIndex);
+                    const isActive = activeIndex === globalIndex;
+                    
+                    return (
+                      <li
+                        key={activity.id}
+                        className={`flex items-center justify-between w-42 gap-2 pl-3.5 pr-2 py-1 -ml-3.5 cursor-pointer transition-all duration-200 ${
+                          isActive ? "bg-light text-primarybrand" : "hover:bg-accent"
+                        }`}
+                        onClick={() => onActivityClick && onActivityClick(globalIndex)}
+                      >
+                        <span className={isActive ? "typo-boldk" : ""}>
+                          {activity.label}
+                        </span>
+                        {activity.isKeyEvent && (
+                          <img
+                            src={activityCheckIcon}
+                            alt=""
+                            width={13}
+                            height={13}
+                            className="shrink-0"
+                            aria-hidden
+                          />
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             ))}
