@@ -23,16 +23,17 @@ export default function PartMenuTab({ activePart, setActivePart }) {
     <div
       ref={tabRef}
       className={`
-        sticky 
+        fixed 
+        sm:sticky
         top-[5.9375rem] sm:top-[3.5625rem]
         z-40 
         w-full 
         flex flex-col items-center
-        ${isStuck ? "bg-transparent sm:bg-secondarybrand" : "bg-secondarybrand"}
       `}
     >
       {/* 메뉴 탭 */}
-      <div className="flex items-center gap-[0.625rem] sm:gap-0">
+      <div className="flex items-center w-full justify-between sm:w-fit sm:justify-center sm:mx-auto">
+
         <PartMenu
           mobileText="PM"
           webText="Product Manager"

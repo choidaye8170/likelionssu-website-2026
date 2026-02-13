@@ -18,7 +18,8 @@ export default function SideBar({ isOpen, onClose }) {
       <div
         className={`fixed top-0 right-0 w-[18.625rem] bg-secondarybrand z-50 transform transition-transform duration-300
                     ${isOpen ? 'translate-x-0' : 'translate-x-full'}
-                    h-[54.625rem] sm:h-[79.9375rem]`}
+                    h-screen
+`}
       >
         {/* Close Button Image */}
         <img
