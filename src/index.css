@@ -375,3 +375,17 @@
   --color-subtext: rgba(2, 2, 2, 0.3);
 }
 
+/* animation */
+
+@keyframes slider {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-slider {
+  animation: slider 12s linear infinite;
+}

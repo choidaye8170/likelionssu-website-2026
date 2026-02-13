@@ -4,6 +4,7 @@ import Lineup from "../Lineup";
 import PmContent from "../Pm/PmContent";
 import SessionSection from "../SessionSection";
 import ShortcutBtn from "../ShortcutBtn";
+import ImageSlider from "../ImageSlider";
 
 export default function ProductManager() {
   return (
@@ -30,6 +31,7 @@ export default function ProductManager() {
         Beautiful moments we will create together
       </p>
       </div>
+      <ImageSlider/>
     </div>
   );
 }
