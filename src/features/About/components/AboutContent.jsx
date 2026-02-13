@@ -22,30 +22,31 @@ export default function AboutContent({ activeIndex, onSectionEnter }) {
       </section>
 
       {/* 세로로 반 나눔: 왼쪽 ROADMAP / 오른쪽 YeonHheok, Core Values, Management Team */}
-      <div className="flex flex-col sm:flex-row gap-10 sm:gap-12">
+      <div className="flex flex-col sm:flex-row gap-10 sm:gap-12 pl-4">
         {/* 왼쪽: ROADMAP */}
         <section className="flex-1 min-w-0">
-          <h2 className="typo-pretitle2e mb-6">ROADMAP</h2>
+          <h2 className="typo-pretitle2e mb-5">ROADMAP</h2>
           <div className="space-y-8">
             {ROADMAP_SECTIONS.map((section) => (
               <div key={section.id}>
-                <h3 className="typo-boldk mb-4">{section.title}</h3>
-                <ul className="typo-bodyk1 space-y-2">
+                <h3 className="typo-boldk mb-2.5">{section.title}</h3>
+                <ul className="typo-bodyk1 space-y-2.25">
                   {section.activities.map((activity) => (
-                    <li key={activity.id}>
-                      <span className="inline-flex items-center gap-1">
-                        {activity.label}
-                        {activity.isKeyEvent && (
-                          <img
-                            src={activityCheckIcon}
-                            alt=""
-                            width={13}
-                            height={13}
-                            className="shrink-0"
-                            aria-hidden
-                          />
-                        )}
-                      </span>
+                    <li
+                      key={activity.id}
+                      className="flex items-center justify-between w-42 gap-2 pl-3.5"
+                    >
+                      <span>{activity.label}</span>
+                      {activity.isKeyEvent && (
+                        <img
+                          src={activityCheckIcon}
+                          alt=""
+                          width={13}
+                          height={13}
+                          className="shrink-0"
+                          aria-hidden
+                        />
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -58,7 +59,7 @@ export default function AboutContent({ activeIndex, onSectionEnter }) {
         <div className="flex-1 min-w-0 flex flex-col gap-10 sm:gap-12">
           <section>
             <h2 className="typo-pretitle2e mb-6">YeonHheok</h2>
-            <ul className="typo-bodyk1 space-y-2">
+            <ul className="typo-bodyk1 space-y-1">
               {YEONHHEOK_ITEMS.map((item, i) => (
                 <li key={i}>{item}</li>
               ))}
@@ -67,7 +68,11 @@ export default function AboutContent({ activeIndex, onSectionEnter }) {
 
           <section>
             <h2 className="typo-pretitle2e mb-6">Core Values</h2>
-            <p className="typo-bodyk1">{CORE_VALUES.join(", ")}</p>
+            <p className="typo-bodyk1 flex flex-wrap items-center gap-x-10 gap-y-1">
+            {CORE_VALUES.map((value, i) => (
+              <span key={i}>{value}</span>
+            ))}
+          </p>
           </section>
 
           <section>
