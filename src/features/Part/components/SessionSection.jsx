@@ -8,10 +8,8 @@ export default function SessionSection({ version = "pm" }) {
   return (
     <div className="relative w-full flex flex-col pt-[3.375rem] sm:pt-[6.81rem]">
 
-      {/* 모바일 */}
       <hr className="z-10 sm:hidden absolute top-0 left-0 w-screen border-t-[0.7px] border-line" />
 
-      {/* 웹 */}
       <div className="z-10 hidden sm:flex absolute top-[0rem] left-1/2 -translate-x-1/2 w-screen justify-end pointer-events-none">
         <hr className="w-[44.5rem] border-t-[0.7px] border-line" />
       </div>
@@ -32,10 +30,8 @@ export default function SessionSection({ version = "pm" }) {
       </div>
 
 
-      {/* 컨텐츠 wrapper */}
       <div className="z-10 w-full flex flex-col sm:flex-row px-[1.19rem] sm:px-0">
 
-        {/* 상단 소개 */}
         <div className="flex flex-col items-start sm:mt-[3.38rem] gap-[1.12rem] order-1 sm:order-2 sm:ml-[4.69rem]">
           <div className="typo-pretitle1k">세션 소개 해주시죠</div>
 
@@ -44,7 +40,6 @@ export default function SessionSection({ version = "pm" }) {
           </p>
         </div>
 
-        {/* 세션 리스트 */}
         <div className="flex flex-col mt-[1.88rem] order-2 sm:order-1 sm:mt-0">
           <p className="hidden sm:block typo-small1 text-text mb-[1.19rem]">
             * 공통 세션 이후에 이루어지는 파트별 세션 내용입니다

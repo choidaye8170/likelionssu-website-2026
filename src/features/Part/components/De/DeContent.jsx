@@ -8,20 +8,12 @@ export default function DeContent() {
   return (
     <div className="relative w-full overflow-x-hidden flex flex-col justify-start items-start gap-[2.75rem] pb-[3.49rem] sm:pb-[4.63rem]">
 
-      {/* =======================
-          hand (웹 전용)
-          - height: 9.1875rem
-          - left 벽에 붙기
-          - top에서 7.19rem 떨어짐
-          - 가장 앞
-      ======================= */}
       <img
         src={hand}
         alt="hand"
         className="hidden sm:block absolute left-0 top-[7.19rem] h-[9.1875rem] z-50 pointer-events-none"
       />
-
-      {/* grid */}
+      
       <div
         className="absolute bottom-[0rem] left-0 w-[14.15625rem] h-[14.28125rem]
                    sm:bottom-[0rem] sm:w-[28.3125rem] sm:h-[28.5625rem]
@@ -34,19 +26,10 @@ export default function DeContent() {
         <img src={grid} alt="grid" className="w-full h-full object-cover" />
       </div>
 
-      {/* =======================
-          모바일용 hr
-      ======================= */}
-      <hr className="w-full border-t-[0.7px] border-line sm:hidden relative z-10" />
 
-      {/* =======================
-          웹용 hr (absolute)
-      ======================= */}
+      <hr className="w-full border-t-[0.7px] border-line sm:hidden relative z-10" />
       <hr className="hidden sm:block absolute top-0 right-0 w-[44.5rem] border-t-[0.7px] border-line z-10" />
 
-      {/* =======================
-          컨텐츠 전체 wrapper
-      ======================= */}
       <div className="relative w-full px-[1.19rem] sm:px-0 z-10">
 
         {/* =======================
@@ -54,7 +37,7 @@ export default function DeContent() {
         ======================= */}
         <div className="hidden sm:flex w-full justify-start sm:justify-center items-start">
 
-          {/* 이미지 묶음 */}
+      
           <div className="relative flex flex-col items-start gap-[1.25rem] mt-[4.87rem]">
             <div className="flex">
               <img
@@ -72,7 +55,6 @@ export default function DeContent() {
             <p className="typo-small1">이연우 이현채</p>
           </div>
 
-          {/* 텍스트 묶음 */}
           <div className="flex flex-col gap-[6.75rem] mt-[4.87rem] ml-[5.62rem]">
             <div className="flex flex-col gap-[1.25rem]">
               <div className="typo-pretitle1k">파트장 한마디</div>
@@ -130,7 +112,7 @@ export default function DeContent() {
             </p>
           </div>
 
-          {/* 이미지 묶음 + hand */}
+         
           <div className="relative w-full flex flex-col items-end gap-[0.81rem]">
 
             <img

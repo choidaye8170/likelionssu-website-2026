@@ -8,7 +8,6 @@ export default function FeContent() {
   return (
     <div className="relative w-full overflow-x-hidden flex flex-col justify-end items-start gap-[2.75rem] min-h-[53.1875rem] pb-[2.68rem]">
 
-      {/* grid */}
       <div
         className="absolute bottom-0 left-0 w-[14.15625rem] h-[14.28125rem]
                    sm:w-[28.3125rem] sm:h-[28.5625rem]
@@ -21,31 +20,21 @@ export default function FeContent() {
         <img src={grid} alt="grid" className="w-full h-full object-cover" />
       </div>
 
-      {/* =======================
-          모바일용 hr
-      ======================= */}
       <hr className="w-full border-t-[0.7px] border-line sm:hidden relative z-10" />
 
-      {/* 웹용 hr */}
       <hr className="hidden sm:block absolute top-[1.6rem] right-0 w-[44.5rem] border-t-[0.7px] border-line z-10" />
 
-      {/* =======================
-          컨텐츠 wrapper
-      ======================= */}
       <div className="relative w-full px-[1.19rem] sm:px-0 z-10">
 
-        {/* =======================
-            웹 레이아웃
-        ======================= */}
+        {/* 웹 */}
         <div className="hidden sm:flex w-full justify-center">
           <div className="w-[72.3125rem] mt-[3.19rem] flex flex-col items-start gap-[2.25rem]">
 
             <div className="flex flex-row justify-start items-center gap-[4.38rem]">
 
-              {/* fe2 이미지 블록 */}
+             
               <div className="relative flex flex-col items-start gap-[1.25rem]">
 
-                {/* cap (웹) */}
                 <img
                   src={cap}
                   alt="cap"
@@ -56,7 +45,7 @@ export default function FeContent() {
                 <p className="typo-small1">최다예 하유경 이정안 서해승</p>
               </div>
 
-              {/* 파트장 한마디 */}
+              
               <div className="flex flex-col gap-[1.25rem]">
                 <div className="typo-pretitle1k">파트장 한마디</div>
                 <p className="typo-body2 whitespace-pre-line">
@@ -72,10 +61,9 @@ export default function FeContent() {
               </div>
             </div>
 
-            {/* 추천 블록 */}
             <div className="flex flex-row justify-start items-center gap-[4.38rem]">
 
-              {/* fe3 이미지 블록 */}
+              
               <div className="flex flex-col items-start gap-[1.25rem]">
                 <img src={fe3} alt="fe3" className="h-[20.6875rem]" />
                 <p className="typo-small1">최다예 하유경 이정안 서해승</p>
@@ -107,7 +95,7 @@ FE 개발을 배우고 싶은 열정은 가득하지만, 어디서부터 시작�
         ======================= */}
         <div className="sm:hidden flex flex-col gap-[2.75rem] w-full">
 
-          {/* 파트장 한마디 */}
+          
           <div className="flex flex-col gap-[1.19rem]">
             <div className="typo-pretitle1k">파트장 한마디</div>
 
@@ -125,10 +113,10 @@ FE 개발을 배우고 싶은 열정은 가득하지만, 어디서부터 시작�
             </p>
           </div>
 
-          {/* fe2 이미지 */}
+         
           <div className="relative flex flex-col items-end gap-[0.81rem]">
 
-            {/* cap (모바일) */}
+      
             <img
               src={cap}
               alt="cap"
@@ -139,7 +127,7 @@ FE 개발을 배우고 싶은 열정은 가득하지만, 어디서부터 시작�
             <p className="typo-small1">최다예 하유경 이정안 서해승</p>
           </div>
 
-          {/* 추천 블록 */}
+    
           <div>
             <div className="typo-subtitlek text-text/30">FE가 고민된다면?</div>
             <div className="typo-pretitle1k pt-[0.88rem]">
@@ -160,7 +148,7 @@ FE 개발을 배우고 싶은 열정은 가득하지만,
             </p>
           </div>
 
-          {/* fe3 이미지 */}
+
           <div className="flex flex-col items-end gap-[0.81rem]">
             <img src={fe3} alt="fe3" className="w-full" />
             <p className="typo-small1">최다예 하유경 이정안 서해승</p>

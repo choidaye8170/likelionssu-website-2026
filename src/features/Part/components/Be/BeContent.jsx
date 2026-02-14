@@ -9,7 +9,7 @@ export default function BeContent() {
   return (
     <div className="relative w-full overflow-x-hidden flex flex-col justify-start items-start gap-[2.75rem] min-h-[54.1875rem] pb-[2.68rem]">
 
-      {/* grid + gradient 배경 */}
+
       <div
         className="absolute bottom-0 left-0 w-[14.15625rem] h-[14.28125rem]
                    sm:w-[28.3125rem] sm:h-[28.5625rem]
@@ -22,31 +22,23 @@ export default function BeContent() {
         <img src={grid} alt="grid" className="w-full h-full object-cover" />
       </div>
 
-      {/* 모바일용 hr */}
       <hr className="w-full border-t-[0.7px] border-line sm:hidden relative z-10" />
-
-      {/* 웹용 hr */}
       <hr className="hidden sm:block absolute top-0 right-0 w-[44.5rem] border-t-[0.7px] border-line z-10" />
 
-      {/* 컨텐츠 wrapper */}
+
       <div className="relative w-full px-[1.19rem] sm:px-0 z-10">
 
-        {/* =======================
-            웹 레이아웃 (최종)
-        ======================= */}
+        {/*  웹  */}
         <div className="hidden sm:flex w-full justify-center">
           <div className="w-[76.315rem] mt-[6.19rem] grid grid-cols-[auto_1fr] gap-x-[2.94rem]">
 
-            {/* 왼쪽 세로 이미지 */}
             <div className="flex flex-col items-start gap-[1.25rem]">
               <img src={be2} alt="be2" className="h-[39.5rem]" />
               <p className="typo-small1">이성윤 최원재 조해원 조수한</p>
             </div>
 
-            {/* 오른쪽 전체 영역 */}
             <div className="grid grid-cols-2 grid-rows-2 gap-x-[7.44rem] gap-y-[2.81rem]">
 
-              {/* 오른쪽 위: 파트장 한마디 */}
               <div className="flex flex-col gap-[1.25rem] pl-[0.81rem]">
                 <div className="typo-pretitle1k">파트장 한마디</div>
 
@@ -62,7 +54,6 @@ export default function BeContent() {
                 </p>
               </div>
 
-              {/* 오른쪽 위: 추천 블록 */}
               <div className="flex flex-col pt-[0.5rem]">
                 <div className="typo-subtitlek text-text/30">BE가 고민된다면?</div>
 
@@ -79,10 +70,9 @@ export default function BeContent() {
                 </p>
               </div>
 
-              {/* 오른쪽 아래: 가로 이미지 (2칸 전체 차지) */}
+              
               <div className="relative col-span-2 flex flex-col items-start gap-[1.25rem]">
                 
-                {/* meow (웹) */}
                 <img
                   src={meow}
                   alt="meow"
@@ -101,12 +91,10 @@ export default function BeContent() {
           </div>
         </div>
 
-        {/* =======================
-            모바일 레이아웃 (그대로 유지)
-        ======================= */}
+        {/* =모바일 */}
         <div className="sm:hidden flex flex-col gap-[2.75rem] w-full">
 
-          {/* 파트장 한마디 */}
+    
           <div className="flex flex-col gap-[1.19rem]">
             <div className="typo-pretitle1k">파트장 한마디</div>
 
@@ -121,14 +109,10 @@ export default function BeContent() {
 올 한 해 멋사가 여러분에게 가장 의미 있었던 기억 중 하나로 남기를 바랍니다! 🦁`}
             </p>
           </div>
-
-          {/* 모바일 첫 이미지 */}
           <div className="flex flex-col items-end gap-[0.81rem]">
             <img src={be3m} alt="be3m" className="w-full" />
             <p className="typo-small1">이성윤 최원재 조해원 조수한</p>
           </div>
-
-          {/* 추천 블록 */}
           <div>
             <div className="typo-subtitlek text-text/30">BE가 고민된다면?</div>
 
@@ -145,11 +129,8 @@ export default function BeContent() {
 끊임없이 고민하고, 부딪히며 성장하고 싶으신 분`}
             </p>
           </div>
-
-          {/* 모바일 두번째 이미지 */}
           <div className="relative flex flex-col items-end gap-[0.81rem]">
 
-            {/* meow (모바일) */}
             <img
               src={meow}
               alt="meow"

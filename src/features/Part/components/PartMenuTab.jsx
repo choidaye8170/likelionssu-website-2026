@@ -32,7 +32,7 @@ export default function PartMenuTab({ activePart, setActivePart }) {
         bg-secondarybrand
       `}
     >
-      {/* 메뉴 탭 */}
+
       <div className="flex items-center w-full justify-between sm:w-fit sm:justify-center sm:mx-auto">
         <PartMenu
           mobileText="PM"
@@ -60,7 +60,6 @@ export default function PartMenuTab({ activePart, setActivePart }) {
         />
       </div>
 
-      {/* 모바일 밑줄: sticky 붙으면 사라짐 */}
       {!isStuck && (
         <div className="w-full border-b-[0.63px] border-line sm:hidden" />
       )}
