@@ -4,7 +4,7 @@ import recruithover from "../../assets/recruit-hover.svg";
 
 // <HoverBtn type="managementteam" />
 
-export default function HoverBtn({ type = "default" }) {
+export default function HoverBtn({ type = "default", onClick }) {
   const [isHover, setIsHover] = useState(false);
 
   const isManagementTeam = type === "managementteam";
@@ -16,6 +16,7 @@ export default function HoverBtn({ type = "default" }) {
       }`}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
+      onClick={onClick}
     >
       {/* Icon */}
       <div className="flex flex-col items-start p-[0.625rem] gap-[0.125rem]">

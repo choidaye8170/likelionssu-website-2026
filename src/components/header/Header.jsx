@@ -49,7 +49,7 @@ export default function Header({
         >
           {/* Recruit - 웹에서만 */}
           <div className="hidden sm:flex">
-            <HoverBtn />
+            <HoverBtn onClick={() => navigate("/recruit")} />
           </div>
 
           {/* Menu 아이콘 */}
