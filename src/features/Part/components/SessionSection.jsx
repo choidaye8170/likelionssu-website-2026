@@ -11,7 +11,7 @@ export default function SessionSection({ version = "pm" }) {
       <hr className="sm:hidden absolute top-0 left-0 w-screen border-t-[0.7px] border-line" />
 
       {/* 웹: 컨텐츠 시작점(6.81rem 아래)에 맞춰서 라인 */}
-      <div className="hidden sm:flex absolute top-[2.81rem] left-1/2 -translate-x-1/2 w-screen justify-end pointer-events-none">
+      <div className="hidden sm:flex absolute top-[0rem] left-1/2 -translate-x-1/2 w-screen justify-end pointer-events-none">
         <hr className="w-[44.5rem] border-t-[0.7px] border-line" />
       </div>
 

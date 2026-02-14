@@ -8,7 +8,7 @@ import ImageSlider from "../ImageSlider";
 
 export default function ProductDesigner() {
   const topRef = useRef(null);
-  const pmContentRef = useRef(null);
+  const deContentRef = useRef(null);
   const sessionRef = useRef(null);
 
   const scrollToSection = (ref) => {
@@ -32,7 +32,7 @@ export default function ProductDesigner() {
         <DeIntro />
 
         <Lineup
-          onScrollToPmContent={() => scrollToSection(pmContentRef)}
+          onScrollToPmContent={() => scrollToSection(deContentRef)}
           onScrollToSession={() => scrollToSection(sessionRef)}
           version="de"
         />
@@ -40,8 +40,8 @@ export default function ProductDesigner() {
 
       {/* 파트장 한마디 섹션 */}
       <div
-        ref={pmContentRef}
-        className="w-full sm:w-[90rem] pt-[3.375rem] sm:pt-[0rem] pb-[0.86rem] sm:pb-[0rem]
+        ref={deContentRef}
+        className="w-full sm:w-[90rem]  sm:pt-[0rem]  sm:pb-[0rem]
         scroll-mt-[4.515rem] sm:scroll-mt-[5.56rem]"
       >
         <DeContent />
@@ -72,7 +72,7 @@ export default function ProductDesigner() {
         </p>
       </div>
 
-      <ImageSlider />
+      <ImageSlider version = "de" />
     </div>
   );
 }

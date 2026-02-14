@@ -5,40 +5,46 @@ import grid from "../../assets/grid-left.svg";
 
 export default function DeContent() {
   return (
-    <div className="relative w-full overflow-x-hidden flex flex-col justify-start items-start gap-[2.75rem] min-h-[55.6rem] pb-[2.68rem]">
+    <div className="relative w-full overflow-x-hidden flex flex-col justify-start items-start gap-[2.75rem] pb-[3.49rem] sm:pb-[4.63rem]">
+
+      {/* =======================
+          grid + gradient 배경 (왼쪽 아래)
+          ⭐ 제일 아래 레이어로 고정
+      ======================= */}
+      <div
+        className="absolute bottom-[0rem] left-0 w-[14.15625rem] h-[14.28125rem]
+                   sm:bottom-[0rem] sm:w-[28.3125rem] sm:h-[28.5625rem]
+                   z-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(225deg, #F9F8F5 29.01%, rgba(249, 248, 245, 0.00) 100%)",
+        }}
+      >
+        <img src={grid} alt="grid" className="w-full h-full object-cover" />
+      </div>
 
       {/* =======================
           모바일용 hr
       ======================= */}
-      <hr className="w-full border-t-[0.7px] border-line sm:hidden" />
+      <hr className="w-full border-t-[0.7px] border-line sm:hidden relative z-10" />
 
       {/* =======================
           웹용 hr (absolute)
       ======================= */}
-      <hr className="hidden sm:block absolute top-0 right-0 w-[44.5rem] border-t-[0.7px] border-line" />
+      <hr className="hidden sm:block absolute top-0 right-0 w-[44.5rem] border-t-[0.7px] border-line z-10" />
 
-      <div className="relative w-full px-[1.19rem] sm:px-0">
-
-        {/* =======================
-            웹 grid + gradient 배경
-        ======================= */}
-        <div
-          className="hidden sm:block absolute bottom-0 left-0 w-[28.3125rem] h-[28.5625rem] z-0"
-          style={{
-            background:
-              "linear-gradient(225deg, #F9F8F5 29.01%, rgba(249, 248, 245, 0.00) 100%)",
-          }}
-        >
-          <img src={grid} alt="grid" className="w-full h-full object-cover" />
-        </div>
+      {/* =======================
+          컨텐츠 전체 wrapper
+      ======================= */}
+      <div className="relative w-full px-[1.19rem] sm:px-0 z-10">
 
         {/* =======================
             웹 레이아웃
         ======================= */}
-        <div className="hidden sm:flex relative z-10 w-full justify-start sm:justify-center items-start">
+        <div className="hidden sm:flex w-full justify-start sm:justify-center items-start">
 
           {/* 이미지 묶음 */}
-          <div className="relative flex flex-col items-end gap-[1.25rem] mt-[4.87rem]">
+          <div className="relative flex flex-col items-start gap-[1.25rem] mt-[4.87rem]">
             <div className="flex">
               <img
                 src={de2}
@@ -52,18 +58,15 @@ export default function DeContent() {
               />
             </div>
 
-            {/* 이미지 묶음 아래 오른쪽 이름 */}
-            <p className="typo-small1">유승빈 김민서 장민영 박현지</p>
+            <p className="typo-small1">이연우 이현채</p>
           </div>
 
-          {/* 텍스트 묶음 (이미지 묶음에서 오른쪽 5.62rem 떨어짐) */}
+          {/* 텍스트 묶음 */}
           <div className="flex flex-col gap-[6.75rem] mt-[4.87rem] ml-[5.62rem]">
-
-            {/* 파트장 한마디 */}
             <div className="flex flex-col gap-[1.25rem]">
               <div className="typo-pretitle1k">파트장 한마디</div>
               <p className="typo-body2 whitespace-pre-line">
-{`안녕하세요 디자인 파트장 이연우입니다.
+                {`안녕하세요 디자인 파트장 이연우입니다.
 이 글을 보고 계신다면 멋쟁이사자처럼에 관심이 있거나
 이미 아기사자가 되신 분일 거예요.
 멋사와 함께하는 1년은 분명 후회 없는 시간이 될 거라
@@ -76,13 +79,14 @@ export default function DeContent() {
               </p>
             </div>
 
-            {/* 추천 블록 */}
             <div>
               <div className="typo-subtitlek text-text/30">DE가 고민된다면?</div>
-              <div className="typo-pretitle1k pt-[0.88rem]">이런 사람에게 추천해요</div>
+              <div className="typo-pretitle1k pt-[0.88rem]">
+                이런 사람에게 추천해요
+              </div>
 
               <p className="typo-body2 pt-[1.25rem] whitespace-pre-wrap">
-{`UX/UI에 대해 제대로 배워보고 싶은 분
+                {`UX/UI에 대해 제대로 배워보고 싶은 분
 
 협업 속에서 디자인 역량을 강화하고 싶은 분
 
@@ -98,12 +102,11 @@ export default function DeContent() {
         ======================= */}
         <div className="sm:hidden flex flex-col gap-[2.75rem] w-full">
 
-          {/* 파트장 한마디 */}
           <div className="flex flex-col gap-[1.19rem]">
             <div className="typo-pretitle1k">파트장 한마디</div>
 
             <p className="typo-body2 whitespace-pre-wrap">
-{`안녕하세요 디자인 파트장 이연우입니다.
+              {`안녕하세요 디자인 파트장 이연우입니다.
 이 글을 보고 계신다면 멋쟁이사자처럼에 관심이 있거나
 이미 아기사자가 되신 분일 거예요.
 멋사와 함께하는 1년은 분명 후회 없는 시간이 될 거라
@@ -116,24 +119,23 @@ export default function DeContent() {
             </p>
           </div>
 
-          {/* 이미지 2개 묶음 w-full로 양옆 딱 붙게 */}
           <div className="relative w-full flex flex-col items-end gap-[0.81rem]">
             <div className="flex w-full">
               <img src={de2} alt="de2" className="w-1/2 object-cover" />
               <img src={de3} alt="de3" className="w-1/2 object-cover" />
             </div>
 
-            {/* 이미지 묶음 아래 오른쪽 이름 */}
             <p className="typo-small1">이연우 이현채</p>
           </div>
 
-          {/* 추천 블록 */}
           <div>
             <div className="typo-subtitlek text-text/30">DE가 고민된다면?</div>
-            <div className="typo-pretitle1k pt-[0.88rem]">이런 사람에게 추천해요</div>
+            <div className="typo-pretitle1k pt-[0.88rem]">
+              이런 사람에게 추천해요
+            </div>
 
             <p className="typo-body2 pt-[1.19rem] whitespace-pre-wrap">
-{`UX/UI에 대해 제대로 배워보고 싶은 분
+              {`UX/UI에 대해 제대로 배워보고 싶은 분
 
 협업 속에서 디자인 역량을 강화하고 싶은 분
 
