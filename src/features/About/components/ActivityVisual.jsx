@@ -30,6 +30,16 @@ export default function ActivityVisual({ activeIndex, scrollToIndex, onScrollCha
   const activityElementsRef = useRef([]);
   const isScrolling = useRef(false);
 
+  // 이미지 프리로딩
+  useEffect(() => {
+    activities.forEach((activity) => {
+      activity.images?.forEach((src) => {
+        const img = new Image();
+        img.src = src;
+      });
+    });
+  }, [activities]);
+
   // 각 활동 컨테이너의 크기 (가로 배열)
   const ACTIVITY_WIDTH = 560; // 이미지 3개를 감싸는 컨테이너 너비
   const ACTIVITY_HEIGHT = IMG_SIZE_2.height; // 가장 큰 이미지 높이 = 184px
@@ -62,94 +72,86 @@ export default function ActivityVisual({ activeIndex, scrollToIndex, onScrollCha
     });
 
     // 스크롤 완료 후 플래그 해제
-    setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       isScrolling.current = false;
+      // 푸터만 동기화 (클릭으로 이동한 인덱스가 끝인지 여부)
+      onReachEnd?.(scrollToIndex === activities.length - 1);
     }, 500);
-  }, [scrollToIndex]);
 
-  // 스크롤 감지 및 중앙 활동 계산
+    return () => clearTimeout(timeoutId);
+    // scrollToIndex 변경 시에만 실행 (onReachEnd 포함 시 부모 리렌더마다 스크롤 재실행됨)
+  }, [scrollToIndex]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // 실시간 반응형 스크롤 엔진 (수동 계산 + rAF)
+  const lastReportedIndexRef = useRef(-1);
+
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container) return;
 
-    let ticking = false;
+    const updateActive = () => {
+      if (isScrolling.current) return;
 
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const containerRect = container.getBoundingClientRect();
-          const containerCenter = containerRect.top + containerRect.height / 2;
+      const containerRect = container.getBoundingClientRect();
+      const viewportCenter = containerRect.top + containerRect.height / 2;
 
-          // 중앙에 가장 가까운 활동 찾기
-          let closestIndex = 0;
-          let closestDistance = Infinity;
+      let closestIndex = 0;
+      let minDistance = Infinity;
 
-          activityElementsRef.current.forEach((element, index) => {
-            if (!element) return;
-            
-            const rect = element.getBoundingClientRect();
-            const elementCenter = rect.top + rect.height / 2;
-            const distance = Math.abs(containerCenter - elementCenter);
+      activityElementsRef.current.forEach((el, index) => {
+        if (!el) return;
 
-            if (distance < closestDistance) {
-              closestDistance = distance;
-              closestIndex = index;
-            }
-          });
+        const rect = el.getBoundingClientRect();
+        const elementCenter = rect.top + rect.height / 2;
+        const distance = Math.abs(viewportCenter - elementCenter);
 
-          if (onScrollChange && closestIndex !== activeIndex && !isScrolling.current) {
-            onScrollChange(closestIndex);
-          }
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestIndex = index;
+        }
+      });
 
-          // 마지막 활동에 도달했는지 체크
-          const isAtLastActivity = closestIndex === activities.length - 1;
-          if (onReachEnd) {
-            onReachEnd(isAtLastActivity);
-          }
-
-          ticking = false;
-        });
-
-        ticking = true;
+      if (closestIndex !== lastReportedIndexRef.current) {
+        lastReportedIndexRef.current = closestIndex;
+        onScrollChange?.(closestIndex);
+        onReachEnd?.(closestIndex === activities.length - 1);
       }
     };
 
-    container.addEventListener('scroll', handleScroll, { passive: true });
-    return () => {
-      container.removeEventListener('scroll', handleScroll);
+    let frameId;
+    const onScroll = () => {
+      cancelAnimationFrame(frameId);
+      frameId = requestAnimationFrame(updateActive);
     };
-  }, [activeIndex, onScrollChange, onReachEnd, activities.length]);
 
-  // 휠 이벤트 제어
+    container.addEventListener("scroll", onScroll, { passive: true });
+    updateActive();
+
+    return () => {
+      container.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(frameId);
+    };
+  }, [activities.length, onScrollChange, onReachEnd]);
+
+  // 휠 이벤트: 끝단에서만 페이지로 전파, 그 외에는 전파만 막고 네이티브 scroll-snap에 맡김
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container) return;
 
     const handleWheel = (e) => {
       const { scrollTop, scrollHeight, clientHeight } = container;
-      const isAtTop = scrollTop === 0;
+      const isAtTop = scrollTop <= 0;
       const isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
 
-      // 최상단에서 위로 스크롤 또는 최하단에서 아래로 스크롤할 때만 페이지 스크롤 허용
       if ((isAtTop && e.deltaY < 0) || (isAtBottom && e.deltaY > 0)) {
         return;
       }
 
-      // 그 외의 경우 페이지 스크롤 방지
-      e.preventDefault();
       e.stopPropagation();
-
-      // 컨테이너 내부 스크롤 (scroll-snap과 호환)
-      container.scrollBy({
-        top: e.deltaY,
-        behavior: 'auto' // scroll-snap이 부드럽게 처리함
-      });
     };
 
-    container.addEventListener("wheel", handleWheel, { passive: false });
-    return () => {
-      container.removeEventListener("wheel", handleWheel);
-    };
+    container.addEventListener("wheel", handleWheel, { passive: true });
+    return () => container.removeEventListener("wheel", handleWheel);
   }, []);
 
   return (
@@ -227,15 +229,19 @@ export default function ActivityVisual({ activeIndex, scrollToIndex, onScrollCha
                         src={src}
                         alt=""
                         className="w-full h-full object-cover"
+                        loading="eager"
+                        decoding="async"
                       />
-                      {/* 선택된 활동이 아닐 때만 동그라미 패턴 오버레이 */}
-                      {!isSelectedActivity && (
-                        <div
-                          className="absolute inset-0 pointer-events-none"
-                          style={dotPatternOverlayStyle}
-                          aria-hidden
-                        />
-                      )}
+                      {/* 동그라미 패턴 오버레이 (GPU 가속) */}
+                      <div
+                        className="absolute inset-0 pointer-events-none transition-opacity duration-150 ease-out"
+                        style={{
+                          ...dotPatternOverlayStyle,
+                          opacity: isSelectedActivity ? 0 : 1,
+                          willChange: "opacity",
+                        }}
+                        aria-hidden
+                      />
                     </div>
                   );
                 })}
