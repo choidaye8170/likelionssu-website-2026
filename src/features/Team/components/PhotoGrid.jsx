@@ -10,6 +10,7 @@ export default function PhotoGrid({ members, selectedId, onSelect }) {
           <button
             key={member.id}
             type="button"
+            data-photo-card="true"
             onClick={() => onSelect(member.id)}
             className="group absolute block h-38.25 w-31.5 overflow-hidden bg-zinc-200 shadow-md transition-transform duration-300 hover:scale-[1.02]"
             style={{

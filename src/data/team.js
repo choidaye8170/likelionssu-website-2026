@@ -42,7 +42,7 @@ export const TEAM_MEMBERS = [
   {
     id: 5,
     name: "장민영",
-    part: "기획 팀장`",
+    part: "기획 팀장",
     image: "/images/team/member-05.jpg",
     quote: "서로 피드백하는 시간이 가장 즐거워요.",
     position: { top: "68.29%", left: "56.81%" },

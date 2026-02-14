@@ -1,41 +1,51 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
+import Footer from "../components/footer/Footer";
+import Header from "../components/header/Header";
+import SideBar from "../components/sidebar/SideBar";
 import { TEAM_MEMBERS } from "../data/team";
 import PhotoGrid from "../features/Team/components/PhotoGrid";
 
 export default function TeamPage() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedId, setSelectedId] = useState(TEAM_MEMBERS[0]?.id ?? null);
 
-  const selectedMember = useMemo(
-    () => TEAM_MEMBERS.find((member) => member.id === selectedId),
-    [selectedId]
-  );
+  const toggleSidebar = () => setIsSidebarOpen((prev) => !prev);
+  const closeSidebar = () => setIsSidebarOpen(false);
+  const clearSelectedOnOutsideClick = (event) => {
+    const target = event.target;
+
+    if (target instanceof Element && target.closest("[data-photo-card='true']")) {
+      return;
+    }
+
+    setSelectedId(null);
+  };
 
   return (
-    <main className="min-h-screen bg-[#efefef] px-4 py-10 sm:px-8">
-      <section className="mx-auto w-full max-w-6xl rounded-sm bg-[#f8f8f8] p-6 sm:p-10">
-        <h1 className="mb-10 text-center text-4xl font-semibold tracking-wider text-black">
-          TEAM
-        </h1>
+    <div className="bg-secondarybrand min-h-screen flex flex-col">
+      <Header onMenuClick={toggleSidebar} />
 
-        <div className="grid gap-10 lg:grid-cols-[1fr_280px]">
-          <div className="mx-auto h-121 w-152.5 max-w-full">
-            <PhotoGrid
-              members={TEAM_MEMBERS}
-              selectedId={selectedId}
-              onSelect={setSelectedId}
-            />
+      <main
+        className="flex-1 px-4 pt-[7.5rem] pb-20 sm:px-6 sm:pt-[6.8125rem]"
+        onClick={clearSelectedOnOutsideClick}
+      >
+        <section className="mx-auto w-full max-w-[83.40625rem]">
+          <h1 className="typo-title1e text-text text-center">TEAM</h1>
+
+          <div className="mt-8 flex justify-center sm:mt-[2.9375rem]">
+            <div className="relative h-[30.25275rem] w-full max-w-[38.149875rem]">
+              <PhotoGrid
+                members={TEAM_MEMBERS}
+                selectedId={selectedId}
+                onSelect={setSelectedId}
+              />
+            </div>
           </div>
+        </section>
+      </main>
 
-          <aside className="rounded-sm border border-black/10 bg-white/60 p-5 text-sm leading-7 text-zinc-700">
-            <p className="mb-2 text-xs tracking-widest text-zinc-500">SELECTED</p>
-            <p className="text-base font-semibold text-black">
-              {selectedMember?.name ?? "-"}
-            </p>
-            <p className="mb-4 text-zinc-600">{selectedMember?.part ?? "-"}</p>
-            <p>{selectedMember?.quote ?? "멤버를 선택하면 멘트가 표시됩니다."}</p>
-          </aside>
-        </div>
-      </section>
-    </main>
+      <Footer />
+      <SideBar isOpen={isSidebarOpen} onClose={closeSidebar} />
+    </div>
   );
 }
