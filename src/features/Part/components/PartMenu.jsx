@@ -11,7 +11,7 @@ export default function PartMenu({
       onClick={onClick}
       className={`
         border border-line flex justify-center items-center
-        py-2.5 px-1 gap-[0.5625rem] w-[5.1875rem]
+        py-2.5 px-1 gap-[0.5625rem] w-full
         
         sm:w-[14rem] sm:h-[2rem] sm:px-[3.0625rem] sm:py-0 sm:gap-[0.625rem]
         sm:rounded-tr-[0.0625rem] sm:rounded-br-[0.0625rem]
