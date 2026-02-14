@@ -5,13 +5,13 @@ import hoverButton from "../assets/IntroSection_hoverButton.svg";
 
 export default function IntroSection() {
   return (
-    <div className="relative w-full min-h-screen bg-secondarybrand flex justify-center items-center px-4 sm:px-[3.75rem] pb-16 pt-[5.9375rem] sm:pt-[3.5625rem]">
+    <div className="relative w-full min-h-screen bg-secondarybrand flex justify-center items-center px-4 sm:px-[3.75rem] pb-8 pt-[5.9375rem] sm:pt-[3.5625rem]">
       {/* 좌측 상단 텍스트 - absolute로 그래픽 위치에 영향 없게 수정 */}
       <div className="absolute left-4 sm:left-[3.75rem] top-[2.5rem] sm:top-[3.5625rem] flex flex-col z-10">
         <h1 className="typo-recruit-title text-primarybrand">POSSIBILLITY</h1>
         <h1 className="typo-recruit-title text-primarybrand">TO</h1>
         <h1 className="typo-recruit-title text-primarybrand">REALITY</h1>
-        <p className="typo-recruit-subtitle text-primarybrand mt-2 sm:mt-4">
+        <p className="typo-recruit-subtitle text-primarybrand mt-4">
           숭실대학교 멋쟁이사자처럼 14기 모집
         </p>
       </div>
@@ -24,7 +24,7 @@ export default function IntroSection() {
             src={backgroundImg}
             alt=""
             className="
-              w-[min(20rem,90vw)] h-[min(12.86rem,40vh)]
+              w-[28rem] h-[18rem]
               sm:w-[min(28rem,70vw)]
               sm:h-[min(18rem,45vh)]
               object-contain
