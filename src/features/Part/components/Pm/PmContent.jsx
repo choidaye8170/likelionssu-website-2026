@@ -28,10 +28,9 @@ export default function PmContent() {
       ======================= */}
       <hr className="w-full border-t-[0.7px] border-line sm:hidden relative z-10" />
 
-      {/* =======================
-          웹용 hr (absolute)
-      ======================= */}
-      <hr className="hidden sm:block absolute top-0 right-0 w-[44.5rem] border-t-[0.7px] border-line relative z-10" />
+      {/* 웹용 hr (absolute) */}
+<hr className="hidden sm:block absolute top-0 right-0 w-[44.5rem] border-t-[0.7px] border-line z-10" />
+
 
       {/* =======================
           컨텐츠 wrapper
