@@ -18,11 +18,13 @@ export default function TeamPage() {
         </h1>
 
         <div className="grid gap-10 lg:grid-cols-[1fr_280px]">
-          <PhotoGrid
-            members={TEAM_MEMBERS}
-            selectedId={selectedId}
-            onSelect={setSelectedId}
-          />
+          <div className="mx-auto h-121 w-152.5 max-w-full">
+            <PhotoGrid
+              members={TEAM_MEMBERS}
+              selectedId={selectedId}
+              onSelect={setSelectedId}
+            />
+          </div>
 
           <aside className="rounded-sm border border-black/10 bg-white/60 p-5 text-sm leading-7 text-zinc-700">
             <p className="mb-2 text-xs tracking-widest text-zinc-500">SELECTED</p>

@@ -2,7 +2,7 @@ const FALLBACK_IMAGE = "/vite.svg";
 
 export default function PhotoGrid({ members, selectedId, onSelect }) {
   return (
-    <div className="relative mx-auto h-[560px] w-full max-w-[740px]">
+    <div className="relative h-full w-full">
       {members.map((member) => {
         const isSelected = selectedId === member.id;
 
@@ -11,7 +11,7 @@ export default function PhotoGrid({ members, selectedId, onSelect }) {
             key={member.id}
             type="button"
             onClick={() => onSelect(member.id)}
-            className="group absolute block h-[170px] w-[130px] overflow-hidden bg-zinc-200 shadow-md transition-transform duration-300 hover:scale-[1.02]"
+            className="group absolute block h-38.25 w-31.5 overflow-hidden bg-zinc-200 shadow-md transition-transform duration-300 hover:scale-[1.02]"
             style={{
               top: member.position.top,
               left: member.position.left,
