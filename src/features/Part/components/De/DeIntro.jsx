@@ -35,7 +35,7 @@ UX/UI 디자인을 통해 완성도 높은 사용자 경험 전반을 만들어�
           </div>
       </div>
 
-      <img src={de1} className="mx-auto w-full sm:w-[36.5rem] self-stretch" />
+      <img src={de1} className="ml-auto w-full sm:w-[36.5rem] self-stretch" />
     </div>
   );
 }

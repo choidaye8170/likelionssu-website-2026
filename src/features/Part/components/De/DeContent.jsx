@@ -7,10 +7,7 @@ export default function DeContent() {
   return (
     <div className="relative w-full overflow-x-hidden flex flex-col justify-start items-start gap-[2.75rem] pb-[3.49rem] sm:pb-[4.63rem]">
 
-      {/* =======================
-          grid + gradient 배경 (왼쪽 아래)
-          ⭐ 제일 아래 레이어로 고정
-      ======================= */}
+      {/* grid */}
       <div
         className="absolute bottom-[0rem] left-0 w-[14.15625rem] h-[14.28125rem]
                    sm:bottom-[0rem] sm:w-[28.3125rem] sm:h-[28.5625rem]
