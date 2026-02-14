@@ -36,13 +36,13 @@ export default function AboutContent({
       {/* 세로로 반 나눔: 왼쪽 ROADMAP / 오른쪽 YeonHheok, Core Values, Management Team */}
       <div className="flex flex-col sm:flex-row gap-10 sm:gap-12 sm:pl-4">
         {/* 왼쪽: ROADMAP - 데스크톱은 클릭 가능한 리스트, 모바일은 클릭 시 이미지 3장 펼침 */}
-        <section className="flex-1 min-w-0 hidden sm:block">
+        <section className="flex-1 min-w-0 hidden sm:block overflow-visible">
           <h2 className="typo-pretitle2e mb-5">ROADMAP</h2>
-          <div className="space-y-8">
+          <div className="space-y-8 overflow-visible">
             {ROADMAP_SECTIONS.map((section, sectionIndex) => (
-              <div key={section.id}>
+              <div key={section.id} className="overflow-visible">
                 <h3 className="typo-boldk mb-2.5">{section.title}</h3>
-                <ul className="typo-bodyk1 space-y-2.25">
+                <ul className="typo-bodyk1 overflow-visible">
                   {section.activities.map((activity, activityIndex) => {
                     const globalIndex = getGlobalIndex(sectionIndex, activityIndex);
                     const isActive = activeIndex === globalIndex;
@@ -50,12 +50,14 @@ export default function AboutContent({
                     return (
                       <li
                         key={activity.id}
-                        className={`flex items-center justify-between w-42 gap-2 pl-3.5 pr-2 py-1 -ml-3.5 cursor-pointer transition-all duration-200 ${
-                          isActive ? "bg-light text-primarybrand" : "hover:bg-accent"
+                        className={`relative flex items-center justify-between w-42 pl-3.5 pr-2 py-1 cursor-pointer transition-all duration-200 ${
+                          isActive
+                            ? "text-primarybrand before:content-[''] before:absolute before:inset-y-0 before:right-0 before:bg-light before:-left-5 before:sm:-left-[4rem] before:z-0"
+                            : "hover:bg-accent"
                         }`}
                         onClick={() => onActivityClick && onActivityClick(globalIndex)}
                       >
-                        <span className={isActive ? "typo-boldk" : ""}>
+                        <span className={`relative z-10 ${isActive ? "typo-boldk" : ""}`}>
                           {activity.label}
                         </span>
                         {activity.isKeyEvent && (
@@ -64,7 +66,7 @@ export default function AboutContent({
                             alt=""
                             width={13}
                             height={13}
-                            className="shrink-0"
+                            className="shrink-0 relative z-10"
                             aria-hidden
                           />
                         )}
