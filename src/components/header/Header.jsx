@@ -13,10 +13,10 @@ export default function Header({
   onMenuClick,
   noneSidebar = false,
   hideMobileMenu = false,
+  hideCenterLine = false,
 }) {
   const navigate = useNavigate();
   return (
-    
     <div
       className={`fixed top-0 left-0 w-full z-50 bg-secondarybrand
                   flex flex-col items-center 
@@ -28,14 +28,15 @@ export default function Header({
         className="flex w-full justify-between items-center relative 
                    sm:w-[83.40625rem] sm:justify-between sm:items-center sm:h-[3.5625rem]"
       >
-        {/* 헤더 가운데 세로선 (웹에서 noneSidebar일 때만) */}
-        {noneSidebar && (
+        {/* 헤더 가운데 세로선 (웹에서 noneSidebar일 때) */}
+        {/* Recruit 페이지에서는 세로선 숨김 */}
+        {noneSidebar && !hideCenterLine && (
           <div className="hidden sm:block absolute left-1/2 sm:top-[-0.625rem] -translate-x-1/2 w-[0.0625rem] sm:h-[3.5625rem] bg-line" />
         )}
 
         {/* Logo */}
         <div className="absolute top-[3.56rem] left-1/2 -translate-x-1/2 sm:static sm:translate-x-0 sm:top-0 sm:left-0">
-          <Logo onClick={() => navigate("/")}/>
+          <Logo onClick={() => navigate("/")} />
         </div>
 
         {/* 웹에서 noneSidebar일 때 MenuTab */}
