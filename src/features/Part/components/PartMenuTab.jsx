@@ -29,11 +29,11 @@ export default function PartMenuTab({ activePart, setActivePart }) {
         z-40 
         w-full 
         flex flex-col items-center
+        bg-secondarybrand
       `}
     >
       {/* 메뉴 탭 */}
       <div className="flex items-center w-full justify-between sm:w-fit sm:justify-center sm:mx-auto">
-
         <PartMenu
           mobileText="PM"
           webText="Product Manager"
