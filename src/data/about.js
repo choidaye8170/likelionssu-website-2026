@@ -94,7 +94,7 @@ export const ROADMAP_SECTIONS = [
         label: "스터디",
         images: ACTIVITY_IMAGES[5],
         imageCaptions: [
-          "여름 방학엔\n다양한 스터디를\n진행해요",
+          "여름 방학엔\n다양한 스터디!",
           "함께 하면\n무엇도 두렵지 않아~",
           "1등으로 성장하고\n1등으로 즐겨요!",
         ],
@@ -106,7 +106,7 @@ export const ROADMAP_SECTIONS = [
         images: ACTIVITY_IMAGES[6],
         imageCaptions: [
           "기다리고 고대하던\n중앙 해커톤이에요",
-          "무박 2일 동안\n모든 멋사가 모이는\n연례행사예요",
+          "모든 멋사가 모이는\n무박 2일!!",
           "짧은 기간 동안\n열정을 불태우는\n짜릿한 경험이랍니다",
         ],
       },
@@ -143,7 +143,7 @@ export const ROADMAP_SECTIONS = [
         imageCaptions: [
           "각 대학에서\n진행한 프로젝트를\n출품해요",
           "시연과 공유를 통해\n아이디어를 나누는\n행사예요",
-          "각 학교 학생들과\n자유롭게 교류하며\n아이디어를 얻어요!",
+          "각 학교 학생들과\n자유롭게 교류해봐요",
         ],
       },
       {
@@ -152,7 +152,7 @@ export const ROADMAP_SECTIONS = [
         images: ACTIVITY_IMAGES[10],
         imageCaptions: [
           "겨울잠은 3개월 동안\n진행되는 멋사의\n장기 프로젝트예요",
-          "의견을 나누며\n완성도를 높이는\n과정을 반복해요",
+          "의견을 나누며\n완성도를 높이기!",
           "겨울잠\n너 거기서~!!",
         ],
       },
@@ -162,7 +162,7 @@ export const ROADMAP_SECTIONS = [
         isKeyEvent: true,
         images: ACTIVITY_IMAGES[11],
         imageCaptions: [
-          "홈커밍데이에선\n멋사를 졸업한\n선배 사자들과\n만나요",
+          "선배 사자들과\n함께하는 시간",
           "강연도 듣고,\n의견도 나눌 수 있는\n유익한 시간이에요",
           "아기사자들은\n조용히 성장 중!",
         ],

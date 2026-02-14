@@ -6,6 +6,17 @@ const IMG_SIZE_1 = { width: 144, height: 108 };
 /** 사진 크기 2: 144×184 */
 const IMG_SIZE_2 = { width: 144, height: 184 };
 
+/** 비선택 활동 사진 위에 깔 동그라미 패턴 오버레이 (SVG 패턴 기반) */
+// viewBox를 작게 만들어 간격 조절 (viewBox 6x6 = 간격이 더 좁아짐)
+// 원 크기(r)는 동일하게 유지하면 원 크기는 그대로, 간격만 좁아짐
+const dotPatternOverlaySvg = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='0 0 6 6'%3E%3Ccircle cx='3' cy='3' r='2.7' fill='white' opacity='1'/%3E%3C/svg%3E`;
+
+const dotPatternOverlayStyle = {
+  backgroundImage: `url("${dotPatternOverlaySvg}")`,
+  backgroundSize: '4px 4px', // SVG width/height와 동일하게
+  backgroundRepeat: 'repeat',
+};
+
 /**
  * 왼쪽 고정 사진 영역.
  * 활동마다 이미지 3장을 세로로 나열하고, activeIndex에 따라 슬라이딩.
@@ -202,6 +213,7 @@ export default function ActivityVisual({ activeIndex, scrollToIndex, onScrollCha
               >
                 {activity.images?.slice(0, 3).map((src, imgIndex) => {
                   const size = sizeClasses[imgIndex];
+                  const isSelectedActivity = activityIndex === activeIndex;
                   return (
                     <div
                       key={imgIndex}
@@ -216,6 +228,14 @@ export default function ActivityVisual({ activeIndex, scrollToIndex, onScrollCha
                         alt=""
                         className="w-full h-full object-cover"
                       />
+                      {/* 선택된 활동이 아닐 때만 동그라미 패턴 오버레이 */}
+                      {!isSelectedActivity && (
+                        <div
+                          className="absolute inset-0 pointer-events-none"
+                          style={dotPatternOverlayStyle}
+                          aria-hidden
+                        />
+                      )}
                     </div>
                   );
                 })}
