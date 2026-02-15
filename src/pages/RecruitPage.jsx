@@ -9,6 +9,7 @@ import PartSection from "../features/Recruit/components/PartSection";
 import RoadmapSection from "../features/Recruit/components/RoadmapSection";
 import TimelineSection from "../features/Recruit/components/TimelineSection";
 import FaqSection from "../features/Recruit/components/FaqSection";
+import ClosingSection from "../features/Recruit/components/ClosingSection";
 
 export default function RecruitPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -24,17 +25,20 @@ export default function RecruitPage() {
         onMenuClick={toggleSidebar}
       />
 
-      <div className="pt-[5.9375rem] sm:pt-0">
-        <IntroSection />
-      </div>
+      <div className="overflow-x-hidden">
+        <div className="pt-[5.9375rem] sm:pt-0">
+          <IntroSection />
+        </div>
 
-      <div className="animate-recruit-content-enter">
-        <ValueSection />
-        <PartSection />
-        <RoadmapSection />
-        <TimelineSection />
-        <FaqSection />
-        <Footer />
+        <div className="animate-recruit-content-enter">
+          <ValueSection />
+          <PartSection />
+          <RoadmapSection />
+          <TimelineSection />
+          <FaqSection />
+          <ClosingSection />
+          <Footer />
+        </div>
       </div>
       <SideBar isOpen={isSidebarOpen} onClose={closeSidebar} />
     </div>
