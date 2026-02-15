@@ -1,3 +1,4 @@
+// 11기
 import assum1 from "../features/Project/assets/11th/assum-1.webp";
 import assum2 from "../features/Project/assets/11th/assum-2.webp";
 import assum3 from "../features/Project/assets/11th/assum-3.webp";
@@ -31,6 +32,39 @@ import remini16 from "../features/Project/assets/11th/remini-16.webp";
 import remini17 from "../features/Project/assets/11th/remini-17.webp";
 import remini18 from "../features/Project/assets/11th/remini-18.webp";
 import remini19 from "../features/Project/assets/11th/remini-19.webp";
+
+// 12기
+import dontspike1 from "../features/Project/assets/12th/dontspike-1.webp";
+import dontspike2 from "../features/Project/assets/12th/dontspike-2.webp";
+import dontspike3 from "../features/Project/assets/12th/dontspike-3.webp";
+import dontspike4 from "../features/Project/assets/12th/dontspike-4.webp";
+import dotoread1 from "../features/Project/assets/12th/dotoread-1.webp";
+import dotoread6 from "../features/Project/assets/12th/dotoread-6.webp";
+import dotoread7 from "../features/Project/assets/12th/dotoread-7.webp";
+import dotoread8 from "../features/Project/assets/12th/dotoread-8.webp";
+import dotoread9 from "../features/Project/assets/12th/dotoread-9.webp";
+import greenspark1 from "../features/Project/assets/12th/greenspark-1.webp";
+import greenspark12 from "../features/Project/assets/12th/greenspark-12.webp";
+import greenspark14 from "../features/Project/assets/12th/greenspark-14.webp";
+import greenspark15 from "../features/Project/assets/12th/greenspark-15.webp";
+import greenspark18 from "../features/Project/assets/12th/greenspark-18.webp";
+import salary1 from "../features/Project/assets/12th/salary-1.webp";
+import salary15 from "../features/Project/assets/12th/salary-15.webp";
+import salary16 from "../features/Project/assets/12th/salary-16.webp";
+import salary17 from "../features/Project/assets/12th/salary-17.webp";
+import salary20 from "../features/Project/assets/12th/salary-20.webp";
+import stew1 from "../features/Project/assets/12th/stew-1.webp";
+import stew2 from "../features/Project/assets/12th/stew-2.webp";
+import stew3 from "../features/Project/assets/12th/stew-3.webp";
+import stew4 from "../features/Project/assets/12th/stew-4.webp";
+import wellnesscoach1 from "../features/Project/assets/12th/wellnesscoach-1.webp";
+import wellnesscoach4 from "../features/Project/assets/12th/wellnesscoach-4.webp";
+import wellnesscoach5 from "../features/Project/assets/12th/wellnesscoach-5.webp";
+import wellnesscoach6 from "../features/Project/assets/12th/wellnesscoach-6.webp";
+import yessir1 from "../features/Project/assets/12th/yessir-1.webp";
+import yessir2 from "../features/Project/assets/12th/yessir-2.webp";
+import yessir4 from "../features/Project/assets/12th/yessir-4.webp";
+import yessir5 from "../features/Project/assets/12th/yessir-5.webp";
 
 const PROJECTS_RAW = [
   // 해커톤
@@ -153,6 +187,133 @@ const PROJECTS_RAW = [
     githubUrl: null,
     instagramUrl:
       "https://www.instagram.com/p/C2McUY7PhAJ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+  },
+  // 12기 해커톤
+  {
+    id: 8,
+    title: "스튜",
+    number: 12,
+    category: "해커톤",
+    description: "스포츠 튜터 매칭 서비스, 스튜와 함께해요!",
+    about:
+      "운동 초보자들이 자격증을 보유한 '전문가'가 아닌 운동을 경험해본 '경험자'에게 부담스럽지 않은 가격으로 운동을 배울 수 있도록 스포츠 튜터를 매칭해주는 서비스입니다.",
+    stack: ["TypeScript", "React", "Spring Boot", "MySQL"],
+    team: "고영명 유태연 신유정 박채연 이상은 전형준",
+    coverImage: stew1,
+    images: [stew1, stew2, stew3, stew4],
+    githubUrl: null,
+    instagramUrl:
+      "https://www.instagram.com/p/C-xpuBMSCoD/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+  },
+  {
+    id: 9,
+    title: "Yes, sir 예썰",
+    number: 12,
+    category: "해커톤",
+    description: "남성 피부 관리 플랫폼",
+    about:
+      "16가지 피부타입에 따른 맞춤 솔루션과 제품을 추천하는 서비스입니다. 바우만 테스트를 기반으로 16가지 피부타입을 간단하게 검진받고 스킨 케어를 처방받을 수 있습니다. 제품 성분에 따라서 자신에게 맞는 케어 제품을 구매할 수 있습니다.",
+    stack: ["TypeScript", "React", "Spring Boot", "MySQL"],
+    team: "박하은 유승빈 김하연 김건휘 백승현 신민경",
+    coverImage: yessir1,
+    images: [yessir1, yessir2, yessir4, yessir5],
+    githubUrl: null,
+    instagramUrl:
+      "https://www.instagram.com/p/C-xrRBFyN31/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+  },
+  {
+    id: 10,
+    title: "Don't 스파이크",
+    number: 12,
+    category: "해커톤",
+    description: "혈당 스파이크를 방지할 작은 시작",
+    about:
+      "당뇨병 환자들을 위한 맞춤형 정보제공 및 데이터 시각화를 통해 올바른 당뇨 관리를 돕는 서비스입니다. 혈당 백과 검색을 통해 특정 음식의 적정 섭취량, 섭취 방법, 혈당 지수 등 당뇨병 환자를 위한 맞춤형 정보를 제공합니다.",
+    stack: ["TypeScript", "React", "Spring Boot", "MySQL"],
+    team: "김상우 최지예 박지효 유민주 김선정 신지환",
+    coverImage: dontspike1,
+    images: [dontspike1, dontspike2, dontspike3, dontspike4],
+    githubUrl: null,
+    instagramUrl:
+      "https://www.instagram.com/p/C-xrnwOSEXg/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+  },
+  {
+    id: 11,
+    title: "Wellness Coach 웰니스 코치",
+    number: 12,
+    category: "해커톤",
+    description: "건강하게 나이드는 당신을 위한 식단 메이트",
+    about:
+      "건강 관리에 관심있는 2030 세대를 위한, 저속노화 식단을 지속 가능하게 해주는 서비스입니다. 오늘의 식단을 진단하고 항목별 피드백과 저속노화 팁 등의 정보를 제공받습니다.",
+    stack: ["TypeScript", "React", "Spring Boot", "MySQL"],
+    team: "류다인 정서윤 지하윤 공윤호 이시온 정연재",
+    coverImage: wellnesscoach1,
+    images: [wellnesscoach1, wellnesscoach4, wellnesscoach5, wellnesscoach6],
+    githubUrl: null,
+    instagramUrl:
+      "https://www.instagram.com/p/C-1QjrJSoc1/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+  },
+  // 12기 겨울잠
+  {
+    id: 12,
+    title: "Salary 샐러리",
+    number: 12,
+    category: "겨울잠",
+    description: "금융/경제 지식을 부담없이 학습 가능한 웹서비스",
+    about:
+      "하루 3분, 경제 한 입 샐러리는 '지속 가능성'을 주제로 10대, 20대의 금융 리터러시 향상을 통해 경제 성장의 선순환을 그리는 것을 궁극적 가치로 바라봅니다. 용어 학습부터 트렌드를 반영한 퀴즈, 뉴스 기능을 제공하는 샐러리는 open AI API와 뉴스 API를 사용해 정보의 질을 향상시키고 다양한 라이브러리를 도입해 더 나은 사용자 경험을 제공합니다.",
+    stack: ["JavaScript", "React", "Spring Boot", "MySQL"],
+    team: "류다인 고영명 박지효 신유정 공윤호 유민주 신민경 신지환",
+    coverImage: salary1,
+    images: [salary1, salary15, salary16, salary17, salary20],
+    githubUrl: null,
+    instagramUrl:
+      "https://www.instagram.com/p/DE8zUOmyWxI/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+  },
+  {
+    id: 13,
+    title: "Greenspark 그린스파크",
+    number: 12,
+    category: "겨울잠",
+    description: "전기요금 절약으로 지속가능한 도약을 만들어내는 서비스",
+    about:
+      "그린스파크는 사용자가 자신의 가전제품 에너지 효율등급을 쉽게 조회하고, 전력 사용량을 분석하여 미래의 전력 소비와 전기세를 예측할 수 있도록 알고리즘을 구현하였습니다. 또한, 사용자에게 맞춤형 전력 절약 팁을 제공하고, 에너지 상식 퀴즈를 통해 지속가능성에 대한 동기부여를 강화합니다.",
+    stack: [
+      "TypeScript",
+      "React",
+      "Next.js",
+      "FastAPI",
+      "Spring Boot",
+      "MySQL",
+    ],
+    team: "최지예 박하은 김하연 지하윤 백승현 이시온 김선정 전형준",
+    coverImage: greenspark1,
+    images: [
+      greenspark1,
+      greenspark12,
+      greenspark14,
+      greenspark15,
+      greenspark18,
+    ],
+    githubUrl: null,
+    instagramUrl:
+      "https://www.instagram.com/p/DE_YaR0SMMK/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+  },
+  {
+    id: 14,
+    title: "Dotoread 도토릿",
+    number: 12,
+    category: "겨울잠",
+    description: "언제든 맛있게 꺼내먹는 Read it Later 서비스",
+    about:
+      "도토릿은 '저장하고 읽지 않는' 현대인들의 디지털 정보 관리 문제를 해결하기 위한 AI 기반 북마크 서비스입니다. 북마크의 핵심 키워드를 추출하고 적절한 폴더를 자동으로 생성하여 원클릭으로 정리할 수 있습니다. 또한, Fresh Article과 Rotten Article로 구성된 리마인드 대시보드를 통해 저장된 콘텐츠를 적절한 시기에 리마인드하고, 장기간 방치된 북마크도 효율적으로 관리할 수 있습니다. 마지막으로, 커뮤니티 기능을 통해 사용자들이 자신만의 북마크 컬렉션을 공유하고, 다른 사용자들의 인사이트를 확장할 수 있는 플랫폼을 제공합니다.",
+    stack: ["TypeScript", "React", "Docker", "Python", "Spring Boot", "MySQL"],
+    team: "유승빈 김상우 김건휘 박채연 유태연 정서윤 이상은 정연재",
+    coverImage: dotoread1,
+    images: [dotoread1, dotoread6, dotoread7, dotoread8, dotoread9],
+    githubUrl: null,
+    instagramUrl:
+      "https://www.instagram.com/p/DE6nss4ymbM/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
   },
 ];
 
