@@ -82,7 +82,7 @@ export default function RoadmapSection() {
       className="flex flex-col w-full min-h-[32rem] bg-secondarybrand"
     >
       {/* 섹션 타이틀 "Our Annual Roadmap" - 모바일 subtitlee / PC pretitle1e */}
-      <h2 className="text-primarybrand text-center px-4 pt-6 pb-2 sm:pb-4">
+      <h2 className="text-primarybrand text-center px-4 pt-6 pb-[2.5rem] sm:pb-4">
         <span className="typo-subtitlee sm:hidden">Our Annual Roadmap</span>
         <span className="hidden sm:block typo-pretitle1e">
           Our Annual Roadmap
@@ -92,7 +92,7 @@ export default function RoadmapSection() {
       {/* 하단: 로드맵 + 콘텐츠 (PC: 가로 / 모바일: 세로) */}
       <div className="flex flex-1 flex-col sm:flex-row">
         {/* 좌측: 로드맵 (노드 + 연결선) - 모바일에서 더 꽉 차게 */}
-        <div className="relative flex-1 min-h-[22rem] sm:min-h-[32rem] flex items-center justify-center px-2 sm:px-5 py-4 sm:py-0">
+        <div className="relative flex-1 min-h-[17rem] sm:min-h-[32rem] flex items-center justify-center px-2 sm:px-5 py-4 sm:py-3">
           <div className="relative w-full max-w-[50rem] aspect-[9/6] mx-auto">
             {/* SVG 컨테이너 */}
             <svg
@@ -179,7 +179,7 @@ export default function RoadmapSection() {
           </div>
         </div>
         {/* 우측/아래: 콘텐츠 패널 - 모바일: 타이틀+설명 아래 이미지 3개 가로 / PC: 기존 그리드 유지 */}
-        <div className="w-full sm:w-[35rem] shrink-0 px-4 py-3 sm:px-0 sm:pr-8 sm:py-8 bg-secondarybrand flex flex-col justify-center">
+        <div className="w-full sm:w-[35rem] shrink-0 px-4 pt-0 pb-3 sm:px-0 sm:pr-8 sm:py-8 bg-secondarybrand flex flex-col justify-center">
           {/* 모바일: 타이틀+설명 아래 이미지 3개 가로 */}
           <div className="space-y-4 sm:hidden">
             <div className="space-y-2">
