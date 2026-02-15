@@ -10,11 +10,19 @@ import PhotoGrid from "../features/Team/components/PhotoGrid";
 const MotionDiv = motion.div;
 const TARGET_ANCHOR_ANGLE = 0;
 const AUTO_ROTATE_DEG_PER_SEC = 3.7894736842; // 360 / 95s
-const ALIGN_DURATION_SEC = 0.9;
+const ALIGN_MIN_DURATION_SEC = 0.35;
+const ALIGN_MAX_DURATION_SEC = 1.1;
+const ALIGN_SPEED_DEG_PER_SEC = 220;
+const LARGE_ROTATION_THRESHOLD_DEG = 180;
+const LARGE_ROTATION_SPEED_MULTIPLIER = 1.4;
 
 function normalizeAngle(angle) {
   const normalized = angle % 360;
   return normalized < 0 ? normalized + 360 : normalized;
+}
+
+function clamp(value, min, max) {
+  return Math.min(max, Math.max(min, value));
 }
 
 export default function TeamPage() {
@@ -56,9 +64,23 @@ export default function TeamPage() {
       alignAnimationRef.current.stop();
     }
 
+    const largeRotationRatio = clamp(
+      clockwiseDelta / LARGE_ROTATION_THRESHOLD_DEG,
+      0,
+      1,
+    );
+    const speedMultiplier =
+      1 + (LARGE_ROTATION_SPEED_MULTIPLIER - 1) * largeRotationRatio;
+    const effectiveSpeedDegPerSec = ALIGN_SPEED_DEG_PER_SEC * speedMultiplier;
+    const alignDurationSec = clamp(
+      Math.abs(clockwiseDelta) / effectiveSpeedDegPerSec,
+      ALIGN_MIN_DURATION_SEC,
+      ALIGN_MAX_DURATION_SEC,
+    );
+
     setIsAligning(true);
     alignAnimationRef.current = animate(rotation, current + clockwiseDelta, {
-      duration: ALIGN_DURATION_SEC,
+      duration: alignDurationSec,
       ease: "easeOut",
       onComplete: () => {
         setIsAligning(false);
