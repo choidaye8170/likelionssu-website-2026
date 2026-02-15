@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ROADMAP_ITEMS } from "../../../data/roadmap";
 import loadingcircle from "../assets/RoadmapSection_circle.svg";
+import circleSelected from "../assets/RoadmapSection_circle_selected.svg";
 
 export default function RoadmapSection() {
   const [selectedNode, setSelectedNode] = useState("교육세션");
@@ -22,11 +23,16 @@ export default function RoadmapSection() {
   const SVG_WIDTH = 900;
   const SVG_HEIGHT = 600;
 
-  // 타원 파라미터 - 모바일에서 너비(RX) 축소
+  // 모바일: viewBox 축소 → 전체 확대(zoom in) 효과
+  const viewBox = isMobile
+    ? "170 90 560 420"
+    : `0 0 ${SVG_WIDTH} ${SVG_HEIGHT}`;
+
+  // 타원 파라미터 - 모바일: 약간 확대 / PC: 기존 유지
   const CENTER_X = SVG_WIDTH / 2;
   const CENTER_Y = SVG_HEIGHT / 2;
-  const RADIUS_X = isMobile ? 300 : 340;
-  const RADIUS_Y = 220;
+  const RADIUS_X = isMobile ? 280 : 340;
+  const RADIUS_Y = isMobile ? 170 : 220;
   const START_ANGLE = -Math.PI / 2; // 12시 방향부터 시작
 
   // 노드 위치 계산
@@ -73,167 +79,182 @@ export default function RoadmapSection() {
   return (
     <section
       id="roadmap-section"
-      className="flex w-full min-h-[32rem] sm:flex-row flex-col bg-secondarybrand"
+      className="flex flex-col w-full min-h-[32rem] bg-secondarybrand"
     >
-      {/* 모바일: 섹션 타이틀 "Our Annual Roadmap" */}
-      <h2 className="sm:hidden typo-subtitlee text-primarybrand text-center px-4 pt-6 pb-2">
-        Our Annual Roadmap
+      {/* 섹션 타이틀 "Our Annual Roadmap" - 모바일 subtitlee / PC pretitle1e */}
+      <h2 className="text-primarybrand text-center px-4 pt-6 pb-2 sm:pb-4">
+        <span className="typo-subtitlee sm:hidden">Our Annual Roadmap</span>
+        <span className="hidden sm:block typo-pretitle1e">Our Annual Roadmap</span>
       </h2>
 
-      {/* 좌측: 로드맵 (노드 + 연결선) - 모바일에서 더 꽉 차게 */}
-      <div className="relative flex-1 min-h-[22rem] sm:min-h-[32rem] flex items-center justify-center px-2 sm:px-5 py-4 sm:py-0">
-        <div className="relative w-full max-w-[50rem] aspect-[9/6] mx-auto">
-          {/* SVG 컨테이너 */}
-          <svg
-            viewBox={`0 0 ${SVG_WIDTH} ${SVG_HEIGHT}`}
-            className="absolute inset-0 w-full h-full"
-            preserveAspectRatio="xMidYMid meet"
-          >
-            {/* 적당히 둥근 곡선 경로 */}
-            <path
-              d={generateSmoothPath()}
-              fill="none"
-              stroke="#000000"
-              strokeWidth="0.5"
-            />
+      {/* 하단: 로드맵 + 콘텐츠 (PC: 가로 / 모바일: 세로) */}
+      <div className="flex flex-1 flex-col sm:flex-row">
+        {/* 좌측: 로드맵 (노드 + 연결선) - 모바일에서 더 꽉 차게 */}
+        <div className="relative flex-1 min-h-[22rem] sm:min-h-[32rem] flex items-center justify-center px-2 sm:px-5 py-4 sm:py-0">
+          <div className="relative w-full max-w-[50rem] aspect-[9/6] mx-auto">
+            {/* SVG 컨테이너 */}
+            <svg
+              viewBox={viewBox}
+              className="absolute inset-0 w-full h-full"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              {/* 적당히 둥근 곡선 경로 */}
+              <path
+                d={generateSmoothPath()}
+                fill="none"
+                stroke="#000000"
+                strokeWidth="0.5"
+              />
 
-            {/* 노드들 */}
-            {ROADMAP_ITEMS.map((item, index) => {
-              const { x, y } = getNodePosition(index);
-              const isSelected = selectedNode === item.id;
+              {/* 노드들 */}
+              {ROADMAP_ITEMS.map((item, index) => {
+                const { x, y } = getNodePosition(index);
+                const isSelected = selectedNode === item.id;
 
-              return (
-                <g key={item.id}>
-                  {/* 노드 배경 */}
-                  <foreignObject x={x - 39} y={y - 25.5} width="78" height="51">
-                    <div className="w-full h-full flex items-center justify-center">
-                      <button
-                        type="button"
-                        onClick={() => setSelectedNode(item.id)}
-                        className={`
-                          w-[4.875rem] h-[3.1875rem] p-2
+                const fw = isMobile ? 120 : 78;
+                const fh = isMobile ? 80 : 51;
+                return (
+                  <g key={item.id}>
+                    {/* 노드 배경 */}
+                    <foreignObject
+                      x={x - fw / 2}
+                      y={y - fh / 2}
+                      width={fw}
+                      height={fh}
+                    >
+                      <div className="w-full h-full flex items-center justify-center">
+                        <button
+                          type="button"
+                          onClick={() => setSelectedNode(item.id)}
+                          className={`
+                          ${isMobile ? "w-[6rem] h-[4rem] p-2.5" : "w-[4.875rem] h-[3.1875rem] p-2"}
                           flex justify-center items-center gap-1
                           rounded-[1.25rem] border border-text
                           text-center
-                          typo-small1 text-text cursor-pointer
+                          ${isMobile ? "typo-bodyk1" : "typo-small1"} text-text cursor-pointer
                           transition-colors
                           ${isSelected ? "bg-primarybrand text-white font-bold" : "bg-light hover:bg-[#FFFFFF] hover:border-primarybrand hover:text-primarybrand"}
                         `}
-                      >
-                        {item.labelLines ? (
-                          <span className="flex flex-col leading-tight typo-small1">
-                            {item.labelLines.map((line, i) => (
-                              <span key={i}>{line}</span>
-                            ))}
-                          </span>
-                        ) : (
-                          <span className="typo-small1 whitespace-nowrap">
-                            {item.label}
-                          </span>
-                        )}
-                        {item.hasAsterisk && (
-                          <img
-                            src={loadingcircle}
-                            alt=""
-                            className="w-[0.6035rem] h-[0.6035rem] ml-0.5 shrink-0"
-                          />
-                        )}
-                      </button>
-                    </div>
-                  </foreignObject>
-                </g>
-              );
-            })}
-          </svg>
+                        >
+                          {item.labelLines ? (
+                            <span
+                              className={`flex flex-col leading-tight ${isMobile ? "typo-bodyk1" : "typo-small1"}`}
+                            >
+                              {item.labelLines.map((line, i) => (
+                                <span key={i}>{line}</span>
+                              ))}
+                            </span>
+                          ) : (
+                            <span
+                              className={`${isMobile ? "typo-bodyk1" : "typo-small1"} whitespace-nowrap`}
+                            >
+                              {item.label}
+                            </span>
+                          )}
+                          {item.hasAsterisk && (
+                            <img
+                              src={isSelected ? circleSelected : loadingcircle}
+                              alt=""
+                              className="w-[0.6035rem] h-[0.6035rem] ml-0.5 shrink-0"
+                            />
+                          )}
+                        </button>
+                      </div>
+                    </foreignObject>
+                  </g>
+                );
+              })}
+            </svg>
 
-          {/* 중앙 로딩 서클 - 회전 애니메이션 */}
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 pointer-events-none">
-            <img
-              src={loadingcircle}
-              alt=""
-              className="w-full h-full animate-[spin_2s_linear_infinite]"
-            />
-          </div>
-        </div>
-      </div>
-      {/* 우측/아래: 콘텐츠 패널 - 모바일: 타이틀+설명 아래 이미지 3개 가로 / PC: 기존 그리드 유지 */}
-      <div className="w-full sm:w-[35rem] shrink-0 px-4 py-6 sm:px-0 sm:pr-8 sm:py-8 bg-secondarybrand flex flex-col justify-center">
-        {/* 모바일: 타이틀+설명 아래 이미지 3개 가로 */}
-        <div className="space-y-4 sm:hidden">
-          <div className="space-y-2">
-            <h2 className="typo-cardtextk text-text font-bold">
-              {selectedContent?.title ?? "로드맵"}
-            </h2>
-            <p className="typo-bodyk1 text-text leading-relaxed break-keep">
-              {selectedContent?.description ?? ""}
-            </p>
-          </div>
-          {selectedContent?.images && (
-            <div className="flex gap-3">
-              <div className="flex-1 min-w-0 aspect-[116/68] overflow-hidden">
-                <img
-                  src={selectedContent.images[0]}
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="flex-1 min-w-0 aspect-[116/68] overflow-hidden">
-                <img
-                  src={selectedContent.images[1]}
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="flex-1 min-w-0 aspect-[116/68] overflow-hidden">
-                <img
-                  src={selectedContent.images[2]}
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
-              </div>
+            {/* 중앙 로딩 서클 - 회전 애니메이션 */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 pointer-events-none">
+              <img
+                src={loadingcircle}
+                alt=""
+                className="w-full h-full animate-[spin_2s_linear_infinite]"
+              />
             </div>
-          )}
+          </div>
         </div>
-
-        {/* PC: 기존 레이아웃 그대로 */}
-        <div className="hidden sm:block space-y-4">
-          <h2 className="typo-cardtextk text-text">
-            {selectedContent?.title ?? "로드맵"}
-          </h2>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="w-full h-[10rem] flex flex-col justify-center space-y-2 p-0">
-              <p className="typo-bodyk1 text-text leading-relaxed">
+        {/* 우측/아래: 콘텐츠 패널 - 모바일: 타이틀+설명 아래 이미지 3개 가로 / PC: 기존 그리드 유지 */}
+        <div className="w-full sm:w-[35rem] shrink-0 px-4 py-6 sm:px-0 sm:pr-8 sm:py-8 bg-secondarybrand flex flex-col justify-center">
+          {/* 모바일: 타이틀+설명 아래 이미지 3개 가로 */}
+          <div className="space-y-4 sm:hidden">
+            <div className="space-y-2">
+              <h2 className="typo-cardtextk text-text font-bold">
+                {selectedContent?.title ?? "로드맵"}
+              </h2>
+              <p className="typo-bodyk1 text-text leading-relaxed break-keep">
                 {selectedContent?.description ?? ""}
               </p>
             </div>
             {selectedContent?.images && (
-              <div className="w-full h-[10rem] overflow-hidden bg-gray-300">
-                <img
-                  src={selectedContent.images[0]}
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
+              <div className="flex gap-3">
+                <div className="flex-1 min-w-0 aspect-[116/68] overflow-hidden">
+                  <img
+                    src={selectedContent.images[0]}
+                    alt=""
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex-1 min-w-0 aspect-[116/68] overflow-hidden">
+                  <img
+                    src={selectedContent.images[1]}
+                    alt=""
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex-1 min-w-0 aspect-[116/68] overflow-hidden">
+                  <img
+                    src={selectedContent.images[2]}
+                    alt=""
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
             )}
           </div>
-          {selectedContent?.images && (
+
+          {/* PC: 기존 레이아웃 그대로 */}
+          <div className="hidden sm:block space-y-4">
+            <h2 className="typo-cardtextk text-text">
+              {selectedContent?.title ?? "로드맵"}
+            </h2>
             <div className="grid grid-cols-2 gap-4">
-              <div className="w-full h-[10rem] overflow-hidden bg-gray-300">
-                <img
-                  src={selectedContent.images[1]}
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
+              <div className="w-full h-[10rem] flex flex-col justify-center space-y-2 p-0">
+                <p className="typo-bodyk1 text-text leading-relaxed">
+                  {selectedContent?.description ?? ""}
+                </p>
               </div>
-              <div className="w-full h-[10rem] overflow-hidden bg-gray-300">
-                <img
-                  src={selectedContent.images[2]}
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              {selectedContent?.images && (
+                <div className="w-full h-[10rem] overflow-hidden bg-gray-300">
+                  <img
+                    src={selectedContent.images[0]}
+                    alt=""
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
             </div>
-          )}
+            {selectedContent?.images && (
+              <div className="grid grid-cols-2 gap-4">
+                <div className="w-full h-[10rem] overflow-hidden bg-gray-300">
+                  <img
+                    src={selectedContent.images[1]}
+                    alt=""
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="w-full h-[10rem] overflow-hidden bg-gray-300">
+                  <img
+                    src={selectedContent.images[2]}
+                    alt=""
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </section>
