@@ -1,5 +1,7 @@
 ﻿import { TEAM_MEMBERS } from "../../../data/team";
 
+const QUOTE_RING_WIDTH_RATIO = 0.98142857;
+
 const BASE_QUOTES = [
   "프로젝트를 직접 기획하고 멋쟁이들과 함께 실현!",
   "자 회장님이 ‘멋사'로 이행시 하신답니다",
@@ -76,6 +78,19 @@ const LAYOUT = [
   { angle: -93.34, inset: [0, 50.33, 76.19, 45.8], rotate: -87.95 },
 ];
 
+function computeLayoutAngle(inset) {
+  const [top, right, bottom, left] = inset;
+  const centerXPercent = left + (100 - left - right) / 2;
+  const centerYPercent = top + (100 - top - bottom) / 2;
+
+  const x = (centerXPercent / 100) * QUOTE_RING_WIDTH_RATIO;
+  const y = centerYPercent / 100;
+  const dx = x - 0.5;
+  const dy = y - 0.5;
+
+  return (Math.atan2(dy, dx) * 180) / Math.PI;
+}
+
 const quoteOwnerMap = new Map();
 TEAM_MEMBERS.forEach((member) => {
   (member.quotes ?? []).forEach((text, quoteIndex) => {
@@ -91,7 +106,7 @@ export const QUOTES = BASE_QUOTES.map((text, index) => {
   return {
     id: index + 1,
     text,
-    angle: LAYOUT[index].angle,
+    angle: computeLayoutAngle(LAYOUT[index].inset),
     memberId: owner?.memberId ?? null,
     quoteIndex: owner?.quoteIndex ?? null,
   };
@@ -100,7 +115,7 @@ export const QUOTES = BASE_QUOTES.map((text, index) => {
 export default function CircularQuotes({ selectedId }) {
   return (
     <div className="relative h-full w-full overflow-visible pointer-events-none select-none">
-      <div className="absolute left-0 top-0 h-full w-[98.142857%]">
+      <div className="absolute left-0 top-0 h-full" style={{ width: `${QUOTE_RING_WIDTH_RATIO * 100}%` }}>
         {LAYOUT.map((item, index) => {
           const quote = QUOTES[index];
           const isSelected = quote.memberId != null && quote.memberId === selectedId;

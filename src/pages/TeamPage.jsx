@@ -1,5 +1,5 @@
-﻿import { useRef, useState } from "react";
-import { animate, motion, useAnimationFrame, useMotionValue } from "framer-motion";
+﻿import { useCallback, useEffect, useRef, useState } from "react";
+import { animate, motion, useMotionValue } from "framer-motion";
 import Footer from "../components/footer/Footer";
 import Header from "../components/header/Header";
 import SideBar from "../components/sidebar/SideBar";
@@ -9,7 +9,8 @@ import PhotoGrid from "../features/Team/components/PhotoGrid";
 
 const MotionDiv = motion.div;
 const TARGET_ANCHOR_ANGLE = 0;
-const AUTO_ROTATE_DEG_PER_SEC = 3.7894736842; // 360 / 95s
+const AUTO_ROTATE_DEG = 360;
+const AUTO_ROTATE_DURATION_SEC = 95;
 const ALIGN_MIN_DURATION_SEC = 0.35;
 const ALIGN_MAX_DURATION_SEC = 1.1;
 const ALIGN_SPEED_DEG_PER_SEC = 220;
@@ -28,15 +29,33 @@ function clamp(value, min, max) {
 export default function TeamPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedId, setSelectedId] = useState(TEAM_MEMBERS[0]?.id ?? null);
-  const [isAligning, setIsAligning] = useState(false);
 
   const rotation = useMotionValue(0);
+  const autoRotateAnimationRef = useRef(null);
   const alignAnimationRef = useRef(null);
 
-  useAnimationFrame((_, delta) => {
-    if (isAligning) return;
-    rotation.set(rotation.get() + (delta / 1000) * AUTO_ROTATE_DEG_PER_SEC);
-  });
+  const startAutoRotate = useCallback(() => {
+    if (autoRotateAnimationRef.current) {
+      autoRotateAnimationRef.current.stop();
+    }
+
+    const current = rotation.get();
+    autoRotateAnimationRef.current = animate(rotation, current + AUTO_ROTATE_DEG, {
+      duration: AUTO_ROTATE_DURATION_SEC,
+      ease: "linear",
+      repeat: Infinity,
+      repeatType: "loop",
+    });
+  }, [rotation]);
+
+  useEffect(() => {
+    startAutoRotate();
+
+    return () => {
+      if (autoRotateAnimationRef.current) autoRotateAnimationRef.current.stop();
+      if (alignAnimationRef.current) alignAnimationRef.current.stop();
+    };
+  }, [startAutoRotate]);
 
   const toggleSidebar = () => setIsSidebarOpen((prev) => !prev);
   const closeSidebar = () => setIsSidebarOpen(false);
@@ -54,6 +73,11 @@ export default function TeamPage() {
     );
 
     if (!selectedQuote) return;
+
+    if (autoRotateAnimationRef.current) {
+      autoRotateAnimationRef.current.stop();
+      autoRotateAnimationRef.current = null;
+    }
 
     const current = rotation.get();
     const currentNormalized = normalizeAngle(current);
@@ -78,13 +102,12 @@ export default function TeamPage() {
       ALIGN_MAX_DURATION_SEC,
     );
 
-    setIsAligning(true);
     alignAnimationRef.current = animate(rotation, current + clockwiseDelta, {
       duration: alignDurationSec,
       ease: "easeOut",
       onComplete: () => {
-        setIsAligning(false);
         alignAnimationRef.current = null;
+        startAutoRotate();
       },
     });
   };
@@ -114,7 +137,10 @@ export default function TeamPage() {
                 </div>
 
                 <div className="absolute left-64 top-0 h-[43.75rem] w-[43.75rem]">
-                  <MotionDiv style={{ rotate: rotation }} className="h-full w-full origin-center">
+                  <MotionDiv
+                    style={{ rotate: rotation, willChange: "transform" }}
+                    className="h-full w-full origin-center transform-gpu"
+                  >
                     <CircularQuotes selectedId={selectedId} />
                   </MotionDiv>
                 </div>
@@ -131,7 +157,10 @@ export default function TeamPage() {
               </div>
 
               <div className="relative h-[30.25rem] w-full max-w-[30.25rem]">
-                <MotionDiv style={{ rotate: rotation }} className="h-full w-full">
+                <MotionDiv
+                  style={{ rotate: rotation, willChange: "transform" }}
+                  className="h-full w-full transform-gpu"
+                >
                   <CircularQuotes selectedId={selectedId} />
                 </MotionDiv>
               </div>
