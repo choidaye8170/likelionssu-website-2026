@@ -129,7 +129,7 @@ export default function RoadmapSection() {
                           type="button"
                           onClick={() => setSelectedNode(item.id)}
                           className={`
-                          ${isMobile ? "w-[6rem] h-[4rem] p-2.5 gap-1" : "w-[5.9375rem] min-w-[5.9375rem] max-w-[5.9375rem] h-[3.4375rem] min-h-[3.4375rem] max-h-[3.4375rem] p-[0.625rem] gap-[0.625rem]"}
+                          ${isMobile ? "w-[6rem] h-[4rem] p-2.5 gap-1" : "w-[5.9375rem] min-w-[5.9375rem] max-w-[5.9375rem] h-[3.4375rem] min-h-[3.4375rem] max-h-[3.4375rem] p-[0.625rem] gap-[0.3rem]"}
                           flex justify-center items-center box-border
                           rounded-[1.25rem] sm:rounded-[1.875rem]
                           border border-text sm:border-[0.0313rem]
