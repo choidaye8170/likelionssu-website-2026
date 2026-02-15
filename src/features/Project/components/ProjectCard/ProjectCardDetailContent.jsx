@@ -7,12 +7,16 @@ const SLIDE_INTERVAL_MS = 3500;
 export default function ProjectCardDetailContent({ project, variant }) {
   const isMobile = variant === "mobile";
 
+  // 표지(coverImage)를 맨 앞에 두고, 나머지 images 이어붙임 (표지와 중복 시 제외)
+  const rawImages = project.images ?? [];
   const imageList =
-    project.images?.length > 0
-      ? project.images
+    project.coverImage && rawImages.length > 0
+      ? [project.coverImage, ...rawImages.filter((img) => img !== project.coverImage)]
       : project.coverImage
         ? [project.coverImage]
-        : [];
+        : rawImages.length > 0
+          ? rawImages
+          : [];
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
