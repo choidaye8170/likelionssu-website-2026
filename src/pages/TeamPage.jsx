@@ -16,6 +16,8 @@ const ALIGN_MAX_DURATION_SEC = 1.1;
 const ALIGN_SPEED_DEG_PER_SEC = 220;
 const LARGE_ROTATION_THRESHOLD_DEG = 180;
 const LARGE_ROTATION_SPEED_MULTIPLIER = 1.4;
+const DESKTOP_QUOTES_SIZE_REM = 43.75;
+const MOBILE_QUOTES_SCALE = 0.95;
 
 function normalizeAngle(angle) {
   const normalized = angle % 360;
@@ -115,7 +117,10 @@ export default function TeamPage() {
   const clearSelectedOnOutsideClick = () => setSelectedId(null);
 
   return (
-    <div className="bg-secondarybrand min-h-screen flex flex-col">
+    <div
+      className="bg-secondarybrand min-h-screen flex flex-col overflow-x-hidden"
+      style={{ overflowX: "clip" }}
+    >
       <Header onMenuClick={toggleSidebar} />
 
       <main
@@ -128,41 +133,51 @@ export default function TeamPage() {
           <div className="mt-8 sm:mt-[2.9375rem]">
             <div className="mx-auto hidden h-[43.75rem] w-full max-w-[60rem] lg:block">
               <div className="relative h-full w-full">
-                <div className="absolute left-0 top-6 h-[30.25rem] w-[38.125rem]">
+                <div className="absolute left-1/2 top-6 h-[30.25rem] w-[38.125rem] -translate-x-1/2">
                   <PhotoGrid
                     members={TEAM_MEMBERS}
                     selectedId={selectedId}
                     onSelect={selectMember}
                   />
-                </div>
-
-                <div className="absolute left-64 top-0 h-[43.75rem] w-[43.75rem]">
-                  <MotionDiv
-                    style={{ rotate: rotation, willChange: "transform" }}
-                    className="h-full w-full origin-center transform-gpu"
-                  >
-                    <CircularQuotes selectedId={selectedId} />
-                  </MotionDiv>
+                  <div className="absolute left-[17.5rem] top-[-4rem] h-[43.75rem] w-[43.75rem]">
+                    <div className="h-full w-full origin-center scale-90 transform-gpu">
+                      <MotionDiv
+                        style={{ rotate: rotation, willChange: "transform" }}
+                        className="h-full w-full origin-center transform-gpu"
+                      >
+                        <CircularQuotes selectedId={selectedId} />
+                      </MotionDiv>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="mx-auto flex w-full max-w-[38rem] flex-col items-center gap-10 lg:hidden">
-              <div className="relative h-[30.25rem] w-full">
-                <PhotoGrid
-                  members={TEAM_MEMBERS}
-                  selectedId={selectedId}
-                  onSelect={selectMember}
-                />
-              </div>
-
-              <div className="relative h-[30.25rem] w-full max-w-[30.25rem]">
-                <MotionDiv
-                  style={{ rotate: rotation, willChange: "transform" }}
-                  className="h-full w-full transform-gpu"
+            <div className="mx-auto w-full lg:hidden">
+              <div
+                className="relative w-screen self-start overflow-x-clip overflow-y-visible"
+                style={{
+                  height: `${DESKTOP_QUOTES_SIZE_REM * MOBILE_QUOTES_SCALE}rem`,
+                  marginLeft: "calc(50% - 50vw)",
+                  contain: "paint",
+                }}
+              >
+                <div
+                  className="absolute left-0 top-0"
+                  style={{
+                    width: `${DESKTOP_QUOTES_SIZE_REM}rem`,
+                    height: `${DESKTOP_QUOTES_SIZE_REM}rem`,
+                    transform: `translateX(-50%) scale(${MOBILE_QUOTES_SCALE})`,
+                    transformOrigin: "top left",
+                  }}
                 >
-                  <CircularQuotes selectedId={selectedId} />
-                </MotionDiv>
+                  <MotionDiv
+                    style={{ rotate: rotation, willChange: "transform" }}
+                    className="h-full w-full transform-gpu"
+                  >
+                    <CircularQuotes selectedId={selectedId} />
+                  </MotionDiv>
+                </div>
               </div>
             </div>
           </div>
