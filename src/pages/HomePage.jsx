@@ -7,7 +7,7 @@ import graphic2 from "../features/Home/assets/home-graphic2.svg";
 import graphic3 from "../features/Home/assets/home-graphic3.svg";
 import introBg from "../features/Recruit/assets/IntroSection_bg.svg";
 import RecruitButton from "../features/Home/components/RecruitButton";
-import BottomTabbar from "../features/Home/components/BottomTabbar";
+import BottomTabbar from "../features/Home/components/BottomTabBar";
 
 export default function HomePage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
