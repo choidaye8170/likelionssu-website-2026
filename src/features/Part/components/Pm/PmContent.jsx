@@ -2,12 +2,13 @@ import React from "react";
 import pm2 from "../../assets/pm/pm-2.svg";
 import pm3 from "../../assets/pm/pm-3.svg";
 import grid from "../../assets/grid-left.svg";
-import camera from "../../assets/pm/camera.svg"
+import camera from "../../assets/pm/camera.svg";
 
 export default function PmContent() {
   return (
     <div className="relative w-full overflow-x-hidden flex flex-col justify-start items-start gap-[2.75rem] min-h-[58rem] pb-[2.68rem]">
 
+      {/* 배경 그리드 */}
       <div
         className="absolute bottom-0 left-0 w-[14.15625rem] h-[14.28125rem]
                    sm:w-[28.3125rem] sm:h-[28.5625rem]
@@ -21,13 +22,11 @@ export default function PmContent() {
       </div>
 
       <hr className="w-full border-t-[0.7px] border-line sm:hidden relative z-10" />
-
       <hr className="hidden sm:block absolute top-0 right-0 w-[44.5rem] border-t-[0.7px] border-line z-10" />
 
       <div className="relative w-full px-[1.19rem] sm:px-0 z-10">
 
-
-
+        {/* 웹 */}
         <div className="hidden sm:block w-full relative">
 
           <div className="absolute top-0 left-[7.25rem] flex flex-col items-start gap-[1.25rem]">
@@ -65,15 +64,23 @@ AI를 자주 써보며 ‘이걸 어떻게 하면
             </p>
           </div>
 
+          {/* PM3 이미지 */}
           <div className="absolute top-[23.62rem] right-[6.69rem] flex flex-col items-end gap-[1.25rem]">
             <img src={pm3} alt="pm3" className="h-[25.5625rem]" />
             <p className="typo-small1">유승빈 김민서 장민영 박현지</p>
           </div>
+
+          {/* Camera 이미지: PM3 바로 위 */}
+          <img
+            src={camera}
+            alt="camera"
+            className="absolute z-20
+                       right-[2.57rem] top-[15.62rem] w-[5.93rem] h-[8rem]
+                       sm:right-[9.5rem] sm:top-[15.62rem] sm:w-[11.875rem] sm:h-[8rem]"
+          />
         </div>
 
-
-
-
+        {/* 모바일 */}
         <div className="sm:hidden flex flex-col gap-[2.75rem] w-full">
 
           <div className="flex flex-col gap-[1.19rem]">
@@ -117,6 +124,13 @@ AI를 자주 써보며 ‘이걸 어떻게 하면
           <div className="flex flex-col items-end gap-[0.81rem]">
             <img src={pm3} alt="pm3" className="w-full" />
             <p className="typo-small1">유승빈 김민서 장민영 박현지</p>
+
+            {/* 모바일 Camera 이미지: PM3 바로 위 */}
+            <img
+              src={camera}
+              alt="camera"
+              className="absolute z-20 right-[2.57rem] top-[calc(100%-26.3rem)] w-[5.93rem] h-[8rem]"
+            />
           </div>
         </div>
       </div>
