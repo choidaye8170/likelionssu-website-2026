@@ -8,7 +8,8 @@ import CircularQuotes, { QUOTES } from "../features/Team/components/CircularQuot
 import PhotoGrid from "../features/Team/components/PhotoGrid";
 
 const MotionDiv = motion.div;
-const TARGET_ANCHOR_ANGLE = -15;
+const DESKTOP_TARGET_ANCHOR_ANGLE = -15;
+const MOBILE_TARGET_ANCHOR_ANGLE = 0;
 const AUTO_ROTATE_DEG = 360;
 const AUTO_ROTATE_DURATION_SEC = 95;
 const ALIGN_MIN_DURATION_SEC = 0.35;
@@ -33,10 +34,7 @@ const MOBILE_PHOTO_GRID_WIDTH_REM =
   PHOTO_GRID_BASE_WIDTH_REM * MOBILE_PHOTO_GRID_SCALE;
 const MOBILE_PHOTO_GRID_HEIGHT_REM =
   PHOTO_GRID_BASE_HEIGHT_REM * MOBILE_PHOTO_GRID_SCALE;
-const MOBILE_PHOTO_GRID_LEFT_REM =
-  (QUOTES_BASE_SIZE_REM - MOBILE_PHOTO_GRID_WIDTH_REM) / 2;
-const MOBILE_PHOTO_GRID_TOP_REM =
-  (QUOTES_BASE_SIZE_REM - MOBILE_PHOTO_GRID_HEIGHT_REM) / 2;
+const MOBILE_PHOTO_GRID_TOP_REM = 1;
 
 function normalizeAngle(angle) {
   const normalized = angle % 360;
@@ -49,7 +47,8 @@ function clamp(value, min, max) {
 
 export default function TeamPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [selectedId, setSelectedId] = useState(TEAM_MEMBERS[0]?.id ?? null);
+  const [selectedId, setSelectedId] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   const rotation = useMotionValue(0);
   const autoRotateAnimationRef = useRef(null);
@@ -78,6 +77,21 @@ export default function TeamPage() {
     };
   }, [startAutoRotate]);
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 1023px)");
+
+    const updateIsMobile = () => {
+      setIsMobile(mediaQuery.matches);
+    };
+
+    updateIsMobile();
+    mediaQuery.addEventListener("change", updateIsMobile);
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateIsMobile);
+    };
+  }, []);
+
   const toggleSidebar = () => setIsSidebarOpen((prev) => !prev);
   const closeSidebar = () => setIsSidebarOpen(false);
 
@@ -102,7 +116,10 @@ export default function TeamPage() {
 
     const current = rotation.get();
     const currentNormalized = normalizeAngle(current);
-    const target = normalizeAngle(TARGET_ANCHOR_ANGLE - selectedQuote.angle);
+    const targetAnchorAngle = isMobile
+      ? MOBILE_TARGET_ANCHOR_ANGLE
+      : DESKTOP_TARGET_ANCHOR_ANGLE;
+    const target = normalizeAngle(targetAnchorAngle - selectedQuote.angle);
     const clockwiseDelta = (target - currentNormalized + 360) % 360;
 
     if (alignAnimationRef.current) {
@@ -211,6 +228,29 @@ export default function TeamPage() {
                 }}
               >
                 <div
+                  className="absolute left-1/2 z-10 -translate-x-1/2"
+                  style={{
+                    top: `${MOBILE_PHOTO_GRID_TOP_REM}rem`,
+                    width: `${MOBILE_PHOTO_GRID_WIDTH_REM}rem`,
+                    height: `${MOBILE_PHOTO_GRID_HEIGHT_REM}rem`,
+                  }}
+                >
+                  <div
+                    className="origin-top-left"
+                    style={{
+                      width: `${PHOTO_GRID_BASE_WIDTH_REM}rem`,
+                      height: `${PHOTO_GRID_BASE_HEIGHT_REM}rem`,
+                      transform: `scale(${MOBILE_PHOTO_GRID_SCALE})`,
+                    }}
+                  >
+                    <PhotoGrid
+                      members={TEAM_MEMBERS}
+                      selectedId={selectedId}
+                      onSelect={selectMember}
+                    />
+                  </div>
+                </div>
+                <div
                   className="absolute left-0 top-0"
                   style={{
                     width: `${QUOTES_BASE_SIZE_REM}rem`,
@@ -219,30 +259,6 @@ export default function TeamPage() {
                     transformOrigin: "top left",
                   }}
                 >
-                  <div
-                    className="absolute z-10"
-                    style={{
-                      left: `${MOBILE_PHOTO_GRID_LEFT_REM}rem`,
-                      top: `${MOBILE_PHOTO_GRID_TOP_REM}rem`,
-                      width: `${MOBILE_PHOTO_GRID_WIDTH_REM}rem`,
-                      height: `${MOBILE_PHOTO_GRID_HEIGHT_REM}rem`,
-                    }}
-                  >
-                    <div
-                      className="origin-top-left"
-                      style={{
-                        width: `${PHOTO_GRID_BASE_WIDTH_REM}rem`,
-                        height: `${PHOTO_GRID_BASE_HEIGHT_REM}rem`,
-                        transform: `scale(${MOBILE_PHOTO_GRID_SCALE})`,
-                      }}
-                    >
-                      <PhotoGrid
-                        members={TEAM_MEMBERS}
-                        selectedId={selectedId}
-                        onSelect={selectMember}
-                      />
-                    </div>
-                  </div>
                   <MotionDiv
                     style={{ rotate: rotation, willChange: "transform" }}
                     className="absolute inset-0 z-0 h-full w-full transform-gpu"
