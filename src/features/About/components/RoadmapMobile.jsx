@@ -14,7 +14,7 @@ const IMG_SIZE_2_CLASS = "w-[102px] h-[76px]";
  * 원본 비율과 관계없이 지정 크기로 잘라서 표시(object-fit: cover).
  */
 export default function RoadmapMobile() {
-  const [expandedId, setExpandedId] = useState(null);
+  const [expandedId, setExpandedId] = useState(0);
   /** 클릭된 이미지: { activityId, imageIndex } | null → 해당 이미지 위에 오버레이+캡션 표시 */
   const [selectedImage, setSelectedImage] = useState(null);
 
