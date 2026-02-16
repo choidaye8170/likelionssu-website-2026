@@ -59,7 +59,7 @@ export default function SideBar({ isOpen, onClose }) {
               <button
                 type="button"
                 className="bg-transparent border-0 p-0 text-left"
-                onClick={() => moveTo("/about")}
+                onClick={() => moveTo("/team")}
               >
                 <MenuText>Management Team</MenuText>
               </button>
