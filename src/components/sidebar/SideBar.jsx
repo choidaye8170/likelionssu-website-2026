@@ -23,7 +23,14 @@ export default function SideBar({ isOpen, onClose }) {
       />
 
       {/* Sidebar */}
+
       <div
+        className={`fixed top-0 right-0 w-[18.625rem] bg-secondarybrand z-50 transform transition-transform duration-300
+                    ${isOpen ? "translate-x-0" : "translate-x-full"}
+                    h-[100%]
+`}
+      >
+       <div
         className={`fixed top-0 right-0 w-[18.625rem] bg-secondarybrand z-50 transform transition-transform duration-300
                     ${isOpen ? "translate-x-0" : "translate-x-full"}
                     h-screen
@@ -59,7 +66,7 @@ export default function SideBar({ isOpen, onClose }) {
               <button
                 type="button"
                 className="bg-transparent border-0 p-0 text-left"
-                onClick={() => moveTo("/about")}
+                onClick={() => moveTo("/team")}
               >
                 <MenuText>Management Team</MenuText>
               </button>
@@ -118,6 +125,7 @@ export default function SideBar({ isOpen, onClose }) {
           <MenuTextRecruit onClick={() => moveTo("/recruit")} />
         </div>
       </div>
+      </div> 
     </>
   );
 }

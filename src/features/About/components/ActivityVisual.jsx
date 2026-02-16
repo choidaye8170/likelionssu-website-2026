@@ -17,6 +17,9 @@ const dotPatternOverlayStyle = {
   backgroundRepeat: 'repeat',
 };
 
+const RENDER_ACTIVITY_RANGE = 3;
+const PRELOAD_ACTIVITY_RANGE = 4;
+
 /**
  * 왼쪽 고정 사진 영역.
  * 활동마다 이미지 3장을 세로로 나열하고, activeIndex에 따라 슬라이딩.
@@ -30,15 +33,21 @@ export default function ActivityVisual({ activeIndex, scrollToIndex, onScrollCha
   const activityElementsRef = useRef([]);
   const isScrolling = useRef(false);
 
-  // 이미지 프리로딩
+  // 현재 활성 인덱스 주변 활동 이미지만 선로딩
   useEffect(() => {
-    activities.forEach((activity) => {
-      activity.images?.forEach((src) => {
+    const start = Math.max(0, activeIndex - PRELOAD_ACTIVITY_RANGE);
+    const end = Math.min(activities.length - 1, activeIndex + PRELOAD_ACTIVITY_RANGE);
+
+    for (let i = start; i <= end; i += 1) {
+      activities[i]?.images?.forEach((src) => {
+        if (!src) return;
         const img = new Image();
+        img.decoding = "async";
+        img.fetchPriority = "low";
         img.src = src;
       });
-    });
-  }, [activities]);
+    }
+  }, [activeIndex, activities]);
 
   // 각 활동 컨테이너의 크기 (가로 배열)
   const ACTIVITY_WIDTH = 560; // 이미지 3개를 감싸는 컨테이너 너비
@@ -194,8 +203,8 @@ export default function ActivityVisual({ activeIndex, scrollToIndex, onScrollCha
           {activities.map((activity, activityIndex) => {
             const isOdd = activityIndex % 2 === 0;
             const sizeClasses = isOdd
-              ? [IMG_SIZE_1, IMG_SIZE_2, IMG_SIZE_1]
-              : [IMG_SIZE_2, IMG_SIZE_1, IMG_SIZE_2];
+              ? [IMG_SIZE_2, IMG_SIZE_1, IMG_SIZE_2]
+              : [IMG_SIZE_1, IMG_SIZE_2, IMG_SIZE_1];
 
             return (
               <div
@@ -216,32 +225,48 @@ export default function ActivityVisual({ activeIndex, scrollToIndex, onScrollCha
                 {activity.images?.slice(0, 3).map((src, imgIndex) => {
                   const size = sizeClasses[imgIndex];
                   const isSelectedActivity = activityIndex === activeIndex;
+                  const caption = activity.imageCaptions?.[imgIndex] ?? "";
+                  const shouldRenderImage =
+                    Math.abs(activityIndex - activeIndex) <= RENDER_ACTIVITY_RANGE;
                   return (
                     <div
                       key={imgIndex}
-                      className="relative overflow-hidden bg-emptyimg shrink-0 flex items-center justify-center"
+                      className="group relative overflow-hidden bg-emptyimg shrink-0 flex items-center justify-center"
                       style={{
                         width: size.width + 'px',
                         height: size.height + 'px',
                       }}
                     >
-                      <img
-                        src={src}
-                        alt=""
-                        className="w-full h-full object-cover"
-                        loading="eager"
-                        decoding="async"
-                      />
+                      {shouldRenderImage && (
+                        <img
+                          src={src}
+                          alt=""
+                          className="w-full h-full object-cover"
+                          loading={isSelectedActivity ? "eager" : "lazy"}
+                          decoding="async"
+                          fetchPriority={isSelectedActivity ? "high" : "low"}
+                        />
+                      )}
                       {/* 동그라미 패턴 오버레이 (GPU 가속) */}
                       <div
-                        className="absolute inset-0 pointer-events-none transition-opacity duration-150 ease-out"
+                        className={`absolute inset-0 pointer-events-none transition-opacity duration-150 ease-out ${
+                          isSelectedActivity
+                            ? "opacity-0"
+                            : "opacity-100"
+                        }`}
                         style={{
                           ...dotPatternOverlayStyle,
-                          opacity: isSelectedActivity ? 0 : 1,
                           willChange: "opacity",
                         }}
                         aria-hidden
                       />
+                      {isSelectedActivity && (
+                        <div className="absolute inset-0 pointer-events-none flex items-center justify-center p-2 bg-hoverimg opacity-0 transition-opacity duration-150 ease-out group-hover:opacity-100">
+                          <span className="typo-small2 text-light text-center break-keep whitespace-pre-line">
+                            {caption}
+                          </span>
+                        </div>
+                      )}
                     </div>
                   );
                 })}

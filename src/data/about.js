@@ -6,17 +6,17 @@
  */
 
 const aboutAssetModules = import.meta.glob(
-  "../features/About/assets/*.webp",
-  { eager: true, import: "default" }
+  "../features/About/assets/thumbnails/*.webp",
+  { eager: true, import: "default" },
 );
 
 /** 활동 id(0~15)별 이미지 3장 [url, url, url] */
 const ACTIVITY_IMAGES = Array.from({ length: 16 }, (_, id) => {
   const n = id + 1;
   return [
-    aboutAssetModules[`../features/About/assets/${n}-1.webp`],
-    aboutAssetModules[`../features/About/assets/${n}-2.webp`],
-    aboutAssetModules[`../features/About/assets/${n}-3.webp`],
+    aboutAssetModules[`../features/About/assets/thumbnails/${n}-1.webp`],
+    aboutAssetModules[`../features/About/assets/thumbnails/${n}-2.webp`],
+    aboutAssetModules[`../features/About/assets/thumbnails/${n}-3.webp`],
   ];
 });
 
@@ -47,7 +47,7 @@ export const ROADMAP_SECTIONS = [
         label: "공통 교육 세션",
         images: ACTIVITY_IMAGES[1],
         imageCaptions: [
-          "프로젝트에 필요한\n핵심 스킬을 익혀요",
+          "핵심 스킬을 익혀요",
           "파트장의 열정으로\n준비한 강연으로\n열심히 성장하기!",
           "밤 10시까지\n집 못가용",
         ],
@@ -58,7 +58,7 @@ export const ROADMAP_SECTIONS = [
         images: ACTIVITY_IMAGES[2],
         imageCaptions: [
           "공통 세션 후\n파트별 세션이\n진행돼요",
-          "파트끼리 꽁꽁\n뭉쳐서\n머리를 싸매봅시다",
+          "파트끼리 뭉쳐서\n머리를 싸매봅시다",
           "세션이 끝나고\n자신감을 얻은 사자들!",
         ],
       },
@@ -68,7 +68,7 @@ export const ROADMAP_SECTIONS = [
         isKeyEvent: true,
         images: ACTIVITY_IMAGES[3],
         imageCaptions: [
-          "각자의 반짝이는\n아이디어를\n맘껏 뽐내는 시간!",
+          "반짝이는 아이디어를\n뽐내는 시간!",
           "모두 열심히\n준비한 첫 프로젝트",
           "뭐가 됐든\n흥미롭고 재밌는\n시간이랍니다",
         ],
@@ -85,7 +85,7 @@ export const ROADMAP_SECTIONS = [
         images: ACTIVITY_IMAGES[4],
         imageCaptions: [
           "대망의 MT에 왔어요\n항상 맛있는 거\n많이 먹어요",
-          "숭멋사에는\n전설의 레크레이션\n사자가 있어요",
+          "전설의 레크레이션\n사자가 있어요",
           "하룻밤 지나고 나면\n소중한 추억들이\n한가득!",
         ],
       },
@@ -141,7 +141,7 @@ export const ROADMAP_SECTIONS = [
         label: "어흥콘",
         images: ACTIVITY_IMAGES[9],
         imageCaptions: [
-          "각 대학에서\n진행한 프로젝트를\n출품해요",
+          "각 대학에서\n프로젝트를 출품해요",
           "시연과 공유를 통해\n아이디어를 나누는\n행사예요",
           "각 학교 학생들과\n자유롭게 교류해봐요",
         ],
@@ -169,22 +169,12 @@ export const ROADMAP_SECTIONS = [
       },
       {
         id: 12,
-        label: "권역별 연계 해커톤",
+        label: "대학 연합 해커톤",
         images: ACTIVITY_IMAGES[12],
         imageCaptions: [
           "올해는 권역별\n연합 해커톤이\n진행될 예정이에요",
           "여러 대학들과\n함께하는 대회!",
           "다 같이 성장하는\n귀한 시간이랍니다",
-        ],
-      },
-      {
-        id: 13,
-        label: "기업 연계 해커톤",
-        images: ACTIVITY_IMAGES[13],
-        imageCaptions: [
-          "기업과 함께하는\n해커톤도\n준비되어 있어요",
-          "기대되시죠?",
-          "정말 재밌을 거라\n자부해요",
         ],
       },
       {
