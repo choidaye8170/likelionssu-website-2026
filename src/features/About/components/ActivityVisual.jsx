@@ -203,8 +203,8 @@ export default function ActivityVisual({ activeIndex, scrollToIndex, onScrollCha
           {activities.map((activity, activityIndex) => {
             const isOdd = activityIndex % 2 === 0;
             const sizeClasses = isOdd
-              ? [IMG_SIZE_1, IMG_SIZE_2, IMG_SIZE_1]
-              : [IMG_SIZE_2, IMG_SIZE_1, IMG_SIZE_2];
+              ? [IMG_SIZE_2, IMG_SIZE_1, IMG_SIZE_2]
+              : [IMG_SIZE_1, IMG_SIZE_2, IMG_SIZE_1];
 
             return (
               <div
@@ -225,12 +225,13 @@ export default function ActivityVisual({ activeIndex, scrollToIndex, onScrollCha
                 {activity.images?.slice(0, 3).map((src, imgIndex) => {
                   const size = sizeClasses[imgIndex];
                   const isSelectedActivity = activityIndex === activeIndex;
+                  const caption = activity.imageCaptions?.[imgIndex] ?? "";
                   const shouldRenderImage =
                     Math.abs(activityIndex - activeIndex) <= RENDER_ACTIVITY_RANGE;
                   return (
                     <div
                       key={imgIndex}
-                      className="relative overflow-hidden bg-emptyimg shrink-0 flex items-center justify-center"
+                      className="group relative overflow-hidden bg-emptyimg shrink-0 flex items-center justify-center"
                       style={{
                         width: size.width + 'px',
                         height: size.height + 'px',
@@ -248,14 +249,24 @@ export default function ActivityVisual({ activeIndex, scrollToIndex, onScrollCha
                       )}
                       {/* 동그라미 패턴 오버레이 (GPU 가속) */}
                       <div
-                        className="absolute inset-0 pointer-events-none transition-opacity duration-150 ease-out"
+                        className={`absolute inset-0 pointer-events-none transition-opacity duration-150 ease-out ${
+                          isSelectedActivity
+                            ? "opacity-0"
+                            : "opacity-100"
+                        }`}
                         style={{
                           ...dotPatternOverlayStyle,
-                          opacity: isSelectedActivity ? 0 : 1,
                           willChange: "opacity",
                         }}
                         aria-hidden
                       />
+                      {isSelectedActivity && (
+                        <div className="absolute inset-0 pointer-events-none flex items-center justify-center p-2 bg-hoverimg opacity-0 transition-opacity duration-150 ease-out group-hover:opacity-100">
+                          <span className="typo-small2 text-light text-center break-keep whitespace-pre-line">
+                            {caption}
+                          </span>
+                        </div>
+                      )}
                     </div>
                   );
                 })}
