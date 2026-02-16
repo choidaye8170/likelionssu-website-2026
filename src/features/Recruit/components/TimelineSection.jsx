@@ -73,7 +73,7 @@ export default function TimelineSection() {
                   className="absolute flex flex-col justify-center"
                   style={{
                     top: `${(MO_MARKER_POSITIONS[index] / 443) * 100}%`,
-                    transform: `translateY(-35%)${index === TIMELINE_ITEMS.length - 1 ? " translateX(0.5rem)" : ""}`,
+                    transform: "translateY(-35%)",
                   }}
                 >
                   <span className="typo-cardtextk text-text font-medium whitespace-nowrap">
