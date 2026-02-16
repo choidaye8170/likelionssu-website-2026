@@ -166,7 +166,7 @@ export const TEAM_MEMBERS = [
   {
     id: 14,
     name: "이연우",
-    part: "디자인 파트장",
+    part: "DE 파트장",
     image: team14,
     quotes: ["멋쟁이들과 함께 한 세월이 정말 빠르게요 (♬- 벌써 일년)"],
     position: { top: "58%", left: "74.5%" },
