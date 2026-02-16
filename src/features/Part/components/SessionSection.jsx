@@ -7,7 +7,6 @@ export default function SessionSection({ version = "pm" }) {
 
   return (
     <div className="relative w-full flex flex-col pt-[3.375rem] sm:pt-[6.81rem]">
-
       <hr className="z-10 sm:hidden absolute top-0 left-0 w-screen border-t-[0.7px] border-line" />
 
       <div className="z-10 hidden sm:flex absolute top-[0rem] left-1/2 -translate-x-1/2 w-screen justify-end pointer-events-none">
@@ -21,6 +20,7 @@ export default function SessionSection({ version = "pm" }) {
           className="w-[13.875rem] h-[14.09375rem] sm:w-[27.75rem] sm:h-[28.1875rem] object-cover"
         />
       </div>
+
       <div className="sm:hidden absolute top-0 right-0 pointer-events-none z-0">
         <img
           src={gridright}
@@ -29,9 +29,7 @@ export default function SessionSection({ version = "pm" }) {
         />
       </div>
 
-
       <div className="z-10 w-full flex flex-col sm:flex-row px-[1.19rem] sm:px-0">
-
         <div className="flex flex-col items-start sm:mt-[3.38rem] gap-[1.12rem] order-1 sm:order-2 sm:ml-[4.69rem]">
           <div className="typo-pretitle1k">세션 소개 해주시죠</div>
 
@@ -47,7 +45,6 @@ export default function SessionSection({ version = "pm" }) {
 
           <div className="px-0.4rem sm:px-0">
             <div className="flex flex-col bg-white w-full h-[32rem] sm:h-[37.5rem] sm:w-[34.8125rem] px-[1rem] py-[1.1rem] sm:px-[1.78rem] sm:py-[1.31rem] rounded-[0.625rem]">
-
               <h2 className="text-center">
                 <span className="block sm:hidden typo-subtitlee">
                   {sessionData.header}
@@ -62,10 +59,11 @@ export default function SessionSection({ version = "pm" }) {
                 {sessionData.sessions.map((item, idx) => (
                   <div
                     key={idx}
-                    className={`flex justify-between items-start pt-[0.36rem] pb-[0.62rem] sm:pt-[0.75rem] sm:pb-[0.62rem] border-t border-line
+                    className={`relative pt-[0.36rem] pb-[0.62rem] sm:pt-[0.75rem] sm:pb-[0.62rem] border-t border-line
                       ${idx === 0 ? "pt-[0.62rem]" : ""}
                     `}
                   >
+                    {/* LEFT 영역 */}
                     <div className="flex flex-col gap-[0.39rem]">
                       <p className="block sm:hidden typo-buttontextbold">
                         {item.title}
@@ -87,19 +85,19 @@ export default function SessionSection({ version = "pm" }) {
                       </div>
                     </div>
 
-                    <div>
-                      <p className="block sm:hidden typo-footer1em">
+                    {/* WEEK 영역 (겹쳐도 됨 + 줄바꿈 절대X) */}
+                    <div className="absolute right-0 top-[0.36rem] sm:top-[0.75rem] z-20">
+                      <p className="block sm:hidden typo-footer1em whitespace-nowrap">
                         WEEK {String(idx + 1).padStart(2, "0")}
                       </p>
 
-                      <p className="hidden sm:block typo-footer1ew">
+                      <p className="hidden sm:block typo-footer1ew whitespace-nowrap">
                         WEEK {String(idx + 1).padStart(2, "0")}
                       </p>
                     </div>
                   </div>
                 ))}
               </div>
-
             </div>
           </div>
 
