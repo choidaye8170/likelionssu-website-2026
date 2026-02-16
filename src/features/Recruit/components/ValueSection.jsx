@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import value1Icon from "../assets/ValueSection_value1.svg";
 import value2Icon from "../assets/ValueSection_value2.svg";
 import value3Icon from "../assets/ValueSection_value3.svg";
 import buttonIcon from "../assets/ValueSection_buttonImg.svg";
+import buttonIconHover from "../assets/ValueSection_buttonImg_hover.svg";
 
 const APPLY_URL = "#"; // 14기 지원 링크로 교체
 
 export default function ValueSection() {
+  const [isButtonPressed, setIsButtonPressed] = useState(false);
   return (
     <section
       id="value-section"
@@ -105,19 +107,30 @@ export default function ValueSection() {
       <div className="flex justify-center items-center w-full max-w-[83.40625rem] mx-auto">
         <a
           href={APPLY_URL}
-          className="w-full max-w-[26.5rem] lg:max-w-[31rem]
+          className={`group w-full max-w-[26.5rem] lg:max-w-[31rem]
              flex items-center justify-center gap-3
-             text-light px-[1.64rem] lg:px-[1.5rem]
+             px-[1.64rem] lg:px-[1.5rem]
              border border-light lg:border-0 bg-black
-             hover:opacity-90 transition-opacity"
+             ${isButtonPressed ? "text-primarybrand" : "text-light"}
+             hover:text-primarybrand`}
+          onTouchStart={() => setIsButtonPressed(true)}
+          onTouchEnd={() => setIsButtonPressed(false)}
+          onTouchCancel={() => setIsButtonPressed(false)}
         >
           <span className="typo-cardtexte lg:hidden">RECRUIT -</span>
           <span className="hidden lg:block typo-subtitlee">RECRUIT -</span>
-          <img
-            src={buttonIcon}
-            alt=""
-            className="h-[2.8125rem] lg:h-[3.7711rem] object-contain px-[1rem] lg:px-[2rem]"
-          />
+          <span className="relative inline-block h-[2.8125rem] lg:h-[3.7711rem] px-[1rem] lg:px-[2rem]">
+            <img
+              src={buttonIcon}
+              alt=""
+              className={`h-full object-contain group-hover:opacity-0 ${isButtonPressed ? "opacity-0" : ""}`}
+            />
+            <img
+              src={buttonIconHover}
+              alt=""
+              className={`absolute inset-0 h-full w-full object-contain opacity-0 group-hover:opacity-100 ${isButtonPressed ? "opacity-100" : ""}`}
+            />
+          </span>
           <span className="typo-buttontextbold lg:hidden">
             14기 지원하러 가기
           </span>
