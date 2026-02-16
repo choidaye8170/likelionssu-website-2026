@@ -163,7 +163,7 @@ const PROJECTS_RAW = [
   },
   {
     id: 4,
-    title: "zero market 제로마켓",
+    title: "제로마켓",
     number: 11,
     category: "해커톤",
     description: "우리동네 가게 재고 솔루션",
@@ -268,7 +268,7 @@ const PROJECTS_RAW = [
   },
   {
     id: 10,
-    title: "Don't 스파이크",
+    title: "돈스파이크",
     number: 12,
     category: "해커톤",
     description: "혈당 스파이크를 방지할 작은 시작",
@@ -284,7 +284,7 @@ const PROJECTS_RAW = [
   },
   {
     id: 11,
-    title: "Wellness Coach 웰니스 코치",
+    title: "웰니스코치",
     number: 12,
     category: "해커톤",
     description: "건강하게 나이드는 당신을 위한 식단 메이트",
@@ -301,7 +301,7 @@ const PROJECTS_RAW = [
   // 12기 겨울잠
   {
     id: 12,
-    title: "Salary 샐러리",
+    title: "샐러리",
     number: 12,
     category: "겨울잠",
     description: "금융/경제 지식을 부담없이 학습 가능한 웹서비스",
@@ -317,10 +317,10 @@ const PROJECTS_RAW = [
   },
   {
     id: 13,
-    title: "Greenspark 그린스파크",
+    title: "그린스파크",
     number: 12,
     category: "겨울잠",
-    description: "전기요금 절약으로 지속가능한 도약을 만들어내는 서비스",
+    description: "전기요금 절약으로 지속가능함을 만들어내는 서비스",
     about:
       "그린스파크는 사용자가 자신의 가전제품 에너지 효율등급을 쉽게 조회하고, 전력 사용량을 분석하여 미래의 전력 소비와 전기세를 예측할 수 있도록 알고리즘을 구현하였습니다. 또한, 사용자에게 맞춤형 전력 절약 팁을 제공하고, 에너지 상식 퀴즈를 통해 지속가능성에 대한 동기부여를 강화합니다.",
     stack: [
@@ -346,7 +346,7 @@ const PROJECTS_RAW = [
   },
   {
     id: 14,
-    title: "Dotoread 도토릿",
+    title: "도토릿",
     number: 12,
     category: "겨울잠",
     description: "언제든 맛있게 꺼내먹는 Read it Later 서비스",
@@ -378,7 +378,7 @@ const PROJECTS_RAW = [
   },
   {
     id: 16,
-    title: "뭐하라고~?뭐하러Go!",
+    title: "뭐하러Go!",
     number: 13,
     category: "아이디어톤",
     description: "AI 활용 나만의 일정 맞춤 서비스",
@@ -545,8 +545,7 @@ const PROJECTS_RAW = [
     title: "PROMPT STUDIO",
     number: 13,
     category: "겨울잠",
-    description:
-      "좋은 프롬프트를 복사해서, 내 스타일로 바로 완성. AI 작업을 쉽고 간단하게 만들어주는 플랫폼",
+    description: "프롬프트를 AI로 쉽고 간단하게 만들어주는 플랫폼",
     about:
       "Prompt Studio는 누구나 좋은 프롬프트를 가져와 자신의 스타일에 맞게 바로 다듬고 활용할 수 있도록 만든 도구형 플랫폼입니다. 특히 인라인 피드백 서비스를 통해 수정 과정에서 즉각적인 개선 제안을 받아, 복사-수정-실행 전 과정을 하나의 흐름으로 자연스럽게 연결합니다. 이를 통해 복잡한 설정 없이도 AI 작업을 빠르고 쉽게 수행하고 결과물 완성도를 높일 수 있습니다.",
     stack: [
@@ -569,7 +568,7 @@ const PROJECTS_RAW = [
   },
   {
     id: 25,
-    title: "CLASSIVERSE",
+    title: "클래시버스",
     number: 13,
     category: "겨울잠",
     description: "등장인물과 대화하며 탐험하는 나만의 고전 유니버스",
