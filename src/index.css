@@ -478,7 +478,7 @@ body,
   }
   100% {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(4) rotate(20deg);
+    transform: translate(-50%, -50%) scale(5) rotate(20deg);
   }
 }
 
@@ -489,7 +489,7 @@ body,
   }
   100% {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(4) rotate(20deg);
+    transform: translate(-50%, -50%) scale(5) rotate(20deg);
   }
 }
 

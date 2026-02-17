@@ -98,8 +98,8 @@ export default function ProjectPage() {
             <div
               className={`
                 sticky z-40
-                top-[5.9375rem] sm:top-[3.5625rem]
-                sm:bg-secondarybrand
+                top-[3.875rem] sm:top-[3.5625rem]
+                bg-transparent
               `}
             >
               <FilterSection
