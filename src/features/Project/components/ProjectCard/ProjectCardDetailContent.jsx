@@ -16,7 +16,10 @@ export default function ProjectCardDetailContent({ project, variant }) {
   const rawImages = project.images ?? [];
   const imageList =
     project.coverImage && rawImages.length > 0
-      ? [project.coverImage, ...rawImages.filter((img) => img !== project.coverImage)]
+      ? [
+          project.coverImage,
+          ...rawImages.filter((img) => img !== project.coverImage),
+        ]
       : project.coverImage
         ? [project.coverImage]
         : rawImages.length > 0
@@ -39,7 +42,7 @@ export default function ProjectCardDetailContent({ project, variant }) {
   const currentIndex =
     imageList.length > 0
       ? imageList.length > 1
-        ? ((trackIndex - 1 + imageList.length) % imageList.length)
+        ? (trackIndex - 1 + imageList.length) % imageList.length
         : 0
       : 0;
 
@@ -135,7 +138,8 @@ export default function ProjectCardDetailContent({ project, variant }) {
 
   const handleTouchEnd = (e) => {
     if (!isMobile || imageList.length <= 1) return;
-    if (touchStartXRef.current === null || touchStartYRef.current === null) return;
+    if (touchStartXRef.current === null || touchStartYRef.current === null)
+      return;
 
     const touch = e.changedTouches[0];
     const dx = touch.clientX - touchStartXRef.current;
@@ -167,7 +171,7 @@ export default function ProjectCardDetailContent({ project, variant }) {
           {project.category}
         </span>
         <p
-          className={`${isMobile ? "typo-cardtextk" : "typo-buttontextbold"} text-text text-center leading-tight`}
+          className={`${isMobile ? "typo-cardtextk" : "typo-cardtextk"} text-text text-center leading-tight`}
         >
           {project.title}
         </p>
