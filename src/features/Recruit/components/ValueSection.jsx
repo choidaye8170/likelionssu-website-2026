@@ -5,7 +5,7 @@ import value3Icon from "../assets/ValueSection_value3.svg";
 import buttonIcon from "../assets/ValueSection_buttonImg.svg";
 import buttonIconHover from "../assets/ValueSection_buttonImg_hover.svg";
 
-const APPLY_URL = "#"; // 14기 지원 링크로 교체
+const APPLY_URL = "https://forms.gle/GWVpzc6G1yLH9Dnt6";
 
 export default function ValueSection() {
   const [isButtonPressed, setIsButtonPressed] = useState(false);
@@ -19,7 +19,10 @@ export default function ValueSection() {
         <span data-value-title="true" className="typo-subtitlee lg:hidden">
           What We Value
         </span>
-        <span data-value-title="true" className="hidden lg:block typo-pretitle1e">
+        <span
+          data-value-title="true"
+          className="hidden lg:block typo-pretitle1e"
+        >
           What We Value
         </span>
       </h2>
@@ -111,6 +114,7 @@ export default function ValueSection() {
       <div className="flex justify-center items-center w-full max-w-[83.40625rem] mx-auto">
         <a
           href={APPLY_URL}
+          target="_blank"
           className={`group w-full max-w-[26.5rem] lg:max-w-[31rem]
              flex items-center justify-center gap-3
              px-[1.64rem] lg:px-[1.5rem]
