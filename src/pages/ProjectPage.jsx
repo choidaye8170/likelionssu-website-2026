@@ -99,7 +99,7 @@ export default function ProjectPage() {
               className={`
                 sticky z-40
                 top-[3.875rem] sm:top-[3.5625rem]
-                bg-transparent
+                bg-secondarybrand
               `}
             >
               <FilterSection
