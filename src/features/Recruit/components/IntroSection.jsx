@@ -172,7 +172,7 @@ export default function IntroSection() {
   const staticArrowOpacity = hasScrolled ? 0 : 1;
   const movingStarOrangeOpacity = Math.min(1, Math.max(0, motion.travelProgress));
   const movingStarBaseOpacity = 1 - movingStarOrangeOpacity;
-  const movingStarRotationDeg = motion.travelProgress * 360;
+  const movingStarRotationDeg = motion.travelProgress * 180;
   const lineFadeIn = Math.min(1, Math.max(0, motion.travelProgress / 0.12));
   const lineFadeOut = Math.min(1, Math.max(0, (1 - motion.travelProgress) / 0.2));
   const fallingLineOpacity = isStarMoving ? lineFadeIn * lineFadeOut : 0;
