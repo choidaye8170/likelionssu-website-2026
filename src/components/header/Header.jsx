@@ -20,6 +20,7 @@ export default function Header({
 
   return (
     <div
+      data-app-header="true"
       className={`fixed top-0 left-0 w-full ${
         transitionMode
           ? "z-[140] bg-transparent border-transparent"
