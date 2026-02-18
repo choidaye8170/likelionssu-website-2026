@@ -78,7 +78,7 @@ export default function RoadmapSection() {
       className="flex flex-col w-full min-h-[32rem] bg-secondarybrand pt-[4rem] pb-[4rem] lg:pt-[10rem] lg:pb-[10rem]"
     >
       {/* 섹션 타이틀 "Our Annual Roadmap" - 모바일 subtitlee / PC pretitle1e */}
-      <h2 className="text-primarybrand text-center px-4 pt-6 pb-[2.5rem] lg:pb-4">
+      <h2 className="text-primarybrand text-center px-4 pt-6 pb-[0] lg:pb-4">
         <span className="typo-subtitlee lg:hidden">Our Annual Roadmap</span>
         <span className="hidden lg:block typo-pretitle1e">
           Our Annual Roadmap
