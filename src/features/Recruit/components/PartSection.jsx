@@ -82,21 +82,21 @@ function PartCard({
           style={{
             aspectRatio: `${textLines.baseSize.width} / ${textLines.baseSize.height}`,
             left: "calc(50% + var(--part-mobile-x-shift))",
+            gap: "var(--part-line-gap)",
           }}
-          className={`recruit-part-text-overlay absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-[180%] min-w-[12rem] max-w-[15rem] h-auto pointer-events-none ${textLinesClassName}`}
+          className={`recruit-part-text-overlay flex flex-col justify-center absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-[180%] min-w-[12rem] max-w-[15rem] h-auto pointer-events-none ${textLinesClassName}`}
         >
           {textLines.lines.map((line, index) => (
             <div
               key={`${label}-${index}`}
               style={{
-                left: `${(line.x / textLines.baseSize.width) * 100}%`,
-                top: `calc(${index} * (var(--part-line-box-height) + var(--part-line-gap)))`,
+                marginLeft: `${(line.x / textLines.baseSize.width) * 100}%`,
               }}
-              className="absolute"
+              className="w-fit"
             >
               <p
                 style={{
-                transitionDelay: `${index * 120}ms`,
+                  transitionDelay: `${index * 120}ms`,
                 }}
                 className={`bg-[rgba(255,255,255,0.95)] px-[0.625rem] py-[0.5rem] whitespace-nowrap typo-recruit-parttext text-[rgba(0,0,0,0.7)] transition-all duration-700 ease-out ${showTextOverlay ? "opacity-100 translate-x-0" : "opacity-0 translate-x-3 group-hover:opacity-100 group-hover:translate-x-0"}`}
               >
