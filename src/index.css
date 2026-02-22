@@ -17,6 +17,11 @@ html {
   }
 }
 
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
 /* ===========================
    Font Face (Interop)
 =========================== */
