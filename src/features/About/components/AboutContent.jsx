@@ -1,5 +1,5 @@
 ﻿import React, { useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   ROADMAP_SECTIONS,
   ABOUT_INTRO,
@@ -18,6 +18,7 @@ export default function AboutContent({
   onActivityClick
 }) {
   const navigate = useNavigate();
+  const location = useLocation();
   const activityItemRefs = useRef([]);
 
   // 전체 활동 인덱스 계산
@@ -55,6 +56,26 @@ export default function AboutContent({
       window.scrollBy({ top: delta, behavior: "smooth" });
     }
   }, [activeIndex]);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || window.innerWidth >= 640) return;
+    if (location.hash !== "#roadmap") return;
+
+    const target = document.getElementById("about-roadmap-mobile");
+    if (!target) return;
+
+    const scrollToRoadmap = () => {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
+    const rafId = window.requestAnimationFrame(scrollToRoadmap);
+    const timeoutId = window.setTimeout(scrollToRoadmap, 220);
+
+    return () => {
+      window.cancelAnimationFrame(rafId);
+      window.clearTimeout(timeoutId);
+    };
+  }, [location.hash]);
 
   return (
     <div className="min-h-screen py-9 px-5 sm:px-12 text-color-text">
@@ -112,7 +133,7 @@ export default function AboutContent({
             ))}
           </div>
         </section>
-        <div className="order-2 sm:order-none">
+        <div id="about-roadmap-mobile" className="order-2 sm:order-none scroll-mt-[6.2rem]">
           <RoadmapMobile />
         </div>
 
