@@ -59,7 +59,9 @@ export default function SideBar({ isOpen, onClose }) {
                 <button
                   type="button"
                   className="bg-transparent border-0 p-0 text-left"
-                  onClick={() => moveTo("/about")}
+                  onClick={() =>
+                    moveTo(window.innerWidth < 640 ? "/about#roadmap" : "/about")
+                  }
                 >
                   <MenuText>RoadMap</MenuText>
                 </button>

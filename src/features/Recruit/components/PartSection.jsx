@@ -6,12 +6,13 @@ import feImg from "../assets/PartSection_fe_img.svg";
 import beImg from "../assets/PartSection_be_img.svg";
 import circle from "../assets/RoadmapSection_circle.svg";
 import { RECRUIT_PART_TEXTS } from "../../../data/recruitPartText";
+import { saveRecruitPartScroll } from "../recruitScrollRestore";
 
 // 파트별 프리코스 영상 URL
 const PRECOURSE_URLS = {
   PM: "https://youtube.com/playlist?list=PL0_ZM90TPnbYPazLWsikA0WsChrZLzAIL&si=ZIJax7muWJ8vUehk",
   DE: "https://youtube.com/playlist?list=PLGh_uyBM2dBLUh9HftRzkpCFV57dpLpJR&si=rwxZXz_JHJKJYYti",
-  FE: "https://youtube.com/playlist?list=PLomA8CWFV7xygG3Nt0jQQnT6KXQ0bjV77&si=PV0ESnFxvAMvMoPt",
+  FE: "https://youtube.com/playlist?list=PL_hpGp4t-L-PRUrXi59eveIq5JovBiO3t&si=3WygK1nDvRdudOwQ",
   BE: "https://www.youtube.com/playlist?list=PLm25o_YohhFvXRGOXe_9qWx60UGwxgfLu",
 };
 
@@ -29,6 +30,9 @@ function PartCard({
 }) {
   // 가로 한 줄: [링크 | 타이틀 | 링크]. BE(아래 헤더)일 때만 버튼 위 / BE 아래
   const isBEBottom = label === "BE" && headerPos === "bottom";
+  const handlePartIntroClick = () => {
+    saveRecruitPartScroll(window.scrollY);
+  };
 
   const TitleAndButtons = (
     <div
@@ -37,6 +41,7 @@ function PartCard({
       <div className="flex items-center shrink-0 gap-[2.5rem]">
         <Link
           to={`/part?tab=${label}`}
+          onClick={handlePartIntroClick}
           className="text-text hover:opacity-80 whitespace-nowrap underline hover:text-primarybrand active:text-primarybrand"
         >
           <span className="typo-buttontextbold sm:hidden">
@@ -82,21 +87,21 @@ function PartCard({
           style={{
             aspectRatio: `${textLines.baseSize.width} / ${textLines.baseSize.height}`,
             left: "calc(50% + var(--part-mobile-x-shift))",
+            gap: "var(--part-line-gap)",
           }}
-          className={`recruit-part-text-overlay absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-[180%] min-w-[12rem] max-w-[15rem] h-auto pointer-events-none ${textLinesClassName}`}
+          className={`recruit-part-text-overlay flex flex-col justify-center absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-[180%] min-w-[12rem] max-w-[15rem] h-auto pointer-events-none ${textLinesClassName}`}
         >
           {textLines.lines.map((line, index) => (
             <div
               key={`${label}-${index}`}
               style={{
-                left: `${(line.x / textLines.baseSize.width) * 100}%`,
-                top: `calc(${index} * (var(--part-line-box-height) + var(--part-line-gap)))`,
+                marginLeft: `${(line.x / textLines.baseSize.width) * 100}%`,
               }}
-              className="absolute"
+              className="w-fit"
             >
               <p
                 style={{
-                transitionDelay: `${index * 120}ms`,
+                  transitionDelay: `${index * 120}ms`,
                 }}
                 className={`bg-[rgba(255,255,255,0.95)] px-[0.625rem] py-[0.5rem] whitespace-nowrap typo-recruit-parttext text-[rgba(0,0,0,0.7)] transition-all duration-700 ease-out ${showTextOverlay ? "opacity-100 translate-x-0" : "opacity-0 translate-x-3 group-hover:opacity-100 group-hover:translate-x-0"}`}
               >
