@@ -133,7 +133,7 @@ export const TEAM_MEMBERS = [
   {
     id: 11,
     name: "조해원",
-    part: "대외협력팀장",
+    part: "대외운영영팀장",
     image: team2,
     quotes: ["힘들었지만 되돌아보니 행복한 기억뿐이었다!"],
     position: { top: "18.54%", left: "0.00%" },
@@ -143,7 +143,7 @@ export const TEAM_MEMBERS = [
   {
     id: 12,
     name: "하유경",
-    part: "대외협력부장",
+    part: "대외운영영부장",
     image: team8,
     quotes: [
       "너무 좋았습니다~ 2026년도 파이팅 해봐요",
