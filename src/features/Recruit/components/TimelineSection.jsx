@@ -10,6 +10,10 @@ const TIMELINE_ITEMS = [
   { title: "최종 결과 발표", date: "3.15(일)" },
 ];
 
+// 데스크탑 SVG 기준 마커 x 위치
+// 5번째 값은 화살표 중심(세로 라인 위치)에 맞춤
+const PC_MARKER_POSITIONS = [7, 189, 371, 553, 735.025];
+
 // 모바일 SVG 기준 마커 y 위치
 // 모바일의 경우, 점 위치와 비슷해야 할 필요가 있어서 좌표로 추출
 const MO_MARKER_POSITIONS = [15, 116, 216, 317, 419];
@@ -30,32 +34,24 @@ export default function TimelineSection() {
 
       {/* PC: 가로 타임라인 */}
       <div className="hidden lg:block w-full max-w-[47.5625rem] mx-auto">
-        <div className="flex flex-col">
-          {/* 텍스트 라인 */}
-          <div className="px-1 py-1">
-            <div className="flex justify-between text-center">
-              {TIMELINE_ITEMS.map((item, index) => (
-                <div
-                  key={item.title}
-                  className={`
-                  flex flex-col items-center gap-0.5
-      ${index === TIMELINE_ITEMS.length - 1 ? "translate-x-2" : ""}
-      ${index === 2 ? "translate-x-4" : ""}
-        ${index === 1 ? "translate-x-3" : ""}
-    `}
-                >
-                  <span className="typo-subtitlek text-text font-medium">
-                    {item.title}
-                  </span>
-                  <span className="typo-bodyk1 text-text">{item.date}</span>
-                </div>
-              ))}
-            </div>
+        <div className="relative">
+          {/* 텍스트 라인: SVG 마커 중심에 절대 배치 */}
+          <div className="relative h-[3.5rem] mb-2 overflow-visible">
+            {TIMELINE_ITEMS.map((item, index) => (
+              <div
+                key={item.title}
+                className="absolute top-0 -translate-x-1/2 flex flex-col items-center gap-0.5 text-center whitespace-nowrap"
+                style={{ left: `${(PC_MARKER_POSITIONS[index] / 761) * 100}%` }}
+              >
+                <span className="typo-subtitlek text-text font-medium">
+                  {item.title}
+                </span>
+                <span className="typo-bodyk1 text-text">{item.date}</span>
+              </div>
+            ))}
           </div>
 
-          <div className="px-10">
-            <img src={linePc} alt="" className="w-full h-auto block" />
-          </div>
+          <img src={linePc} alt="" className="w-full h-auto block" />
         </div>
       </div>
 
