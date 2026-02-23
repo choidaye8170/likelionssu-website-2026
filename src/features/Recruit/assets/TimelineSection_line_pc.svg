@@ -5,7 +5,7 @@
 <path d="M717.955 8.0708L752.097 42.2125" stroke="#FF5202" stroke-width="2" stroke-linecap="round"/>
 <path d="M717.984 42.2129L752.126 8.07123" stroke="#FF5202" stroke-width="2" stroke-linecap="round"/>
 <circle cx="7" cy="25" r="7" fill="#FF5202"/>
-<circle cx="195.9" cy="25" r="7" fill="#FF5202"/>
-<circle cx="372.9" cy="25" r="7" fill="#FF5202"/>
-<circle cx="530.9" cy="25" r="7" fill="#FF5202"/>
+<circle cx="189" cy="25" r="7" fill="#FF5202"/>
+<circle cx="371" cy="25" r="7" fill="#FF5202"/>
+<circle cx="553" cy="25" r="7" fill="#FF5202"/>
 </svg>

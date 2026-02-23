@@ -12,7 +12,7 @@ const TIMELINE_ITEMS = [
 
 // 데스크탑 SVG 기준 마커 x 위치
 // 5번째 값은 화살표 중심(세로 라인 위치)에 맞춤
-const PC_MARKER_POSITIONS = [7, 195.9, 372.9, 530.9, 735.025];
+const PC_MARKER_POSITIONS = [7, 189, 371, 553, 735.025];
 
 // 모바일 SVG 기준 마커 y 위치
 // 모바일의 경우, 점 위치와 비슷해야 할 필요가 있어서 좌표로 추출
