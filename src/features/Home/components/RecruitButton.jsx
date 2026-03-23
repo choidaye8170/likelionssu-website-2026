@@ -31,7 +31,7 @@ export default function RecruitButton({ onRecruitClick, disabled = false }) {
       <img src={ellipsew} className="hidden sm:block" alt="ellipse-web" />
 
       {/* 텍스트 (ellipse 정중앙에 위치) */}
-      <div className="absolute flex flex-col justify-center items-center gap-[0.5625rem]">
+      <div className="absolute flex flex-col justify-center items-center gap-[0.3125rem]">
         <MenuTextRecruit variant="white" isHover={isHover} />
 
         {/* 모바일 버전 */}
@@ -41,7 +41,7 @@ export default function RecruitButton({ onRecruitClick, disabled = false }) {
             color: isHover ? "var(--color-primarybrand)" : "#FFF",
           }}
         >
-          14기 지원하러 가기
+          모집 상세 보러가기
         </p>
 
         {/* 웹 버전 */}
@@ -58,7 +58,7 @@ export default function RecruitButton({ onRecruitClick, disabled = false }) {
             letterSpacing: "0.09375rem",
           }}
         >
-          14기 지원하러 가기
+          모집 상세 보러가기
         </p>
       </div>
     </div>

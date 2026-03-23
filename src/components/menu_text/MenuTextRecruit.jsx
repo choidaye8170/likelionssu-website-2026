@@ -24,17 +24,15 @@ export default function MenuTextRecruit({
 
       {/* 화이트 모바일용: 글자+아이콘+선 가운데 정렬 */}
       {isWhite && (
-        <div className="sm:hidden flex flex-col items-center justify-center gap-[0.09rem]">
+        <div className="sm:hidden flex flex-col items-center justify-center gap-[0.3125rem]">
           <div className="flex items-end justify-center gap-[0.56rem]">
-            {/* Text */}
             <p
               className="typo-cardtexte"
               style={{ color: hovered ? "var(--color-primarybrand)" : "#FFF" }}
             >
-              RECRUIT
+              LIKELION
             </p>
 
-            {/* Icon */}
             <img
               src={hovered ? recruithover : recruitwhite}
               alt="recruit-icon"
@@ -44,7 +42,7 @@ export default function MenuTextRecruit({
 
           {/* Underline */}
           <span
-            className="h-[1px] w-[6.46875rem]"
+            className="h-[1px] w-[7.5rem]"
             style={{
               backgroundColor: hovered ? "var(--color-primarybrand)" : "#FFF",
             }}
@@ -52,28 +50,36 @@ export default function MenuTextRecruit({
         </div>
       )}
 
-      {/* 화이트 웹용: 글자 + 아이콘 */}
+      {/* 화이트 웹용: 글자+아이콘+선 가운데 정렬 */}
       {isWhite && (
-        <div className="hidden sm:flex items-center gap-[0.75rem]">
-          <p
-            style={{
-              color: hovered ? "var(--color-primarybrand)" : "#FFF",
-              textAlign: "right",
-              fontFamily: '"JetBrains Mono"',
-              fontSize: "1.5rem",
-              fontStyle: "normal",
-              fontWeight: 500,
-              lineHeight: "1.875rem",
-            }}
-          >
-            RECRUIT
-          </p>
+        <div className="hidden sm:flex flex-col items-center justify-center gap-[0.3125rem]">
+          <div className="flex items-center justify-center gap-[0.75rem]">
+            <p
+              style={{
+                color: hovered ? "var(--color-primarybrand)" : "#FFF",
+                textAlign: "center",
+                fontFamily: '"JetBrains Mono"',
+                fontSize: "1.5rem",
+                fontStyle: "normal",
+                fontWeight: 500,
+                lineHeight: "1.875rem",
+              }}
+            >
+              LIKELION
+            </p>
 
-          {/* 웹 아이콘 */}
-          <img
-            src={hovered ? recruithover : recruitwhite}
-            alt="recruit-icon"
-            className="w-[1.59375rem] h-[1.60275rem]"
+            <img
+              src={hovered ? recruithover : recruitwhite}
+              alt="recruit-icon"
+              className="w-[1.59375rem] h-[1.60275rem]"
+            />
+          </div>
+
+          <span
+            className="h-[1px] w-[9.75rem]"
+            style={{
+              backgroundColor: hovered ? "var(--color-primarybrand)" : "#FFF",
+            }}
           />
         </div>
       )}
@@ -87,7 +93,7 @@ export default function MenuTextRecruit({
               color: hovered ? "var(--color-primarybrand)" : "var(--color-text)",
             }}
           >
-            RECRUIT
+            Recruit
           </p>
 
           <img
@@ -107,16 +113,6 @@ export default function MenuTextRecruit({
         </div>
       )}
 
-      {/* 화이트 웹용 선 */}
-      {isWhite && (
-        <span
-          className="absolute h-[1px] bottom-[-0.07rem] hidden sm:block"
-          style={{
-            width: "8.625rem",
-            backgroundColor: hovered ? "var(--color-primarybrand)" : "#FFF",
-          }}
-        />
-      )}
     </Wrapper>
   );
 }
