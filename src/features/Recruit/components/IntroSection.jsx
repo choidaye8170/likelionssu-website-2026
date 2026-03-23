@@ -276,7 +276,8 @@ export default function IntroSection() {
         <h1 className="typo-recruit-title text-primarybrand">TO</h1>
         <h1 className="typo-recruit-title text-primarybrand">REALITY</h1>
         <p className="typo-recruit-subtitle text-primarybrand mt-4">
-          숭실대학교 멋쟁이사자처럼 14기 모집
+          지금은 모집 기간이 아니에요
+          {/* 숭실대학교 멋쟁이사자처럼<br/>14기 모집은 마감되었습니다 */}
         </p>
       </div>
 
@@ -352,7 +353,7 @@ export default function IntroSection() {
               typo-recruit-scroll text-text max-w-[8rem] lg:max-w-none whitespace-normal lg:whitespace-nowrap leading-tight animate-recruit-content-enter
             "
           >
-            모집 상세 보러 가기
+            Who's Next?
           </p>
         </div>
       </div>

@@ -26,9 +26,9 @@ export default function TimelineSection() {
     >
       {/* 타이틀 - 모바일 subtitlee / PC pretitle1e */}
       <h2 className="text-center text-primarybrand mb-12 lg:mb-[6.25rem]">
-        <span className="typo-subtitlee lg:hidden">Application Timeline</span>
+        <span className="typo-subtitlee lg:hidden">Application Process</span>
         <span className="hidden lg:block typo-pretitle1e">
-          Application Timeline
+          Application Process
         </span>
       </h2>
 
@@ -36,7 +36,7 @@ export default function TimelineSection() {
       <div className="hidden lg:block w-full max-w-[47.5625rem] mx-auto">
         <div className="relative">
           {/* 텍스트 라인: SVG 마커 중심에 절대 배치 */}
-          <div className="relative h-[3.5rem] mb-2 overflow-visible">
+          <div className="relative h-[1.75rem] mb-[0.375rem] overflow-visible">
             {TIMELINE_ITEMS.map((item, index) => (
               <div
                 key={item.title}
@@ -46,7 +46,6 @@ export default function TimelineSection() {
                 <span className="typo-subtitlek text-text font-medium">
                   {item.title}
                 </span>
-                <span className="typo-bodyk1 text-text">{item.date}</span>
               </div>
             ))}
           </div>
@@ -76,13 +75,10 @@ export default function TimelineSection() {
                     top: `${(MO_MARKER_POSITIONS[index] / 443) * 100}%`,
                     transform: "translateY(-35%)",
                   }}
-                >
-                  <span className="typo-cardtextk text-text font-medium whitespace-nowrap">
-                    {item.title}
-                  </span>
-                  <span className="typo-bodyk1 text-text whitespace-nowrap">
-                    {item.date}
-                  </span>
+                  >
+                    <span className="typo-cardtextk text-text font-medium whitespace-nowrap">
+                      {item.title}
+                    </span>
                 </div>
               ))}
             </div>

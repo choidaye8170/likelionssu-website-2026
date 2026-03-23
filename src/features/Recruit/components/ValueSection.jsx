@@ -1,14 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import value1Icon from "../assets/ValueSection_value1.svg";
 import value2Icon from "../assets/ValueSection_value2.svg";
 import value3Icon from "../assets/ValueSection_value3.svg";
-import buttonIcon from "../assets/ValueSection_buttonImg.svg";
-import buttonIconHover from "../assets/ValueSection_buttonImg_hover.svg";
-
-const APPLY_URL = "https://forms.gle/GWVpzc6G1yLH9Dnt6";
 
 export default function ValueSection() {
-  const [isButtonPressed, setIsButtonPressed] = useState(false);
   return (
     <section
       id="value-section"
@@ -110,43 +105,6 @@ export default function ValueSection() {
         </article>
       </div>
 
-      {/* 하단 RECRUIT 버튼 - PC: 2번째 레이아웃 / 모바일: 3번째 레이아웃 */}
-      <div className="flex justify-center items-center w-full max-w-[83.40625rem] mx-auto">
-        <a
-          href={APPLY_URL}
-          target="_blank"
-          className={`group w-full max-w-[26.5rem] lg:max-w-[31rem]
-             flex items-center justify-center gap-3
-             px-[1.64rem] lg:px-[1.5rem]
-             border border-light lg:border-0 bg-black
-             ${isButtonPressed ? "text-primarybrand" : "text-light"}
-             hover:text-primarybrand`}
-          onTouchStart={() => setIsButtonPressed(true)}
-          onTouchEnd={() => setIsButtonPressed(false)}
-          onTouchCancel={() => setIsButtonPressed(false)}
-        >
-          <span className="typo-cardtexte lg:hidden">RECRUIT -</span>
-          <span className="hidden lg:block typo-subtitlee">RECRUIT -</span>
-          <span className="relative inline-block h-[2.8125rem] lg:h-[3.7711rem] px-[1rem] lg:px-[2rem]">
-            <img
-              src={buttonIcon}
-              alt=""
-              className={`h-full object-contain group-hover:opacity-0 ${isButtonPressed ? "opacity-0" : ""}`}
-            />
-            <img
-              src={buttonIconHover}
-              alt=""
-              className={`absolute inset-0 h-full w-full object-contain opacity-0 group-hover:opacity-100 ${isButtonPressed ? "opacity-100" : ""}`}
-            />
-          </span>
-          <span className="typo-buttontextbold lg:hidden">
-            14기 지원하러 가기
-          </span>
-          <span className="hidden lg:block typo-recruit-button ">
-            14기 지원하러 가기
-          </span>
-        </a>
-      </div>
     </section>
   );
 }
