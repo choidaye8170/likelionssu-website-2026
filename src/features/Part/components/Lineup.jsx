@@ -19,7 +19,7 @@ export default function Lineup({
 
         <div className="flex flex-col gap-[0.69rem]">
           <div className="typo-small1">{lineupData.recruitLabel}</div>
-          <div className="typo-subtitlek text-text/20">
+          <div className="typo-subtitlek text-text">
             {lineupData.recruitStatus}
           </div>
         </div>
